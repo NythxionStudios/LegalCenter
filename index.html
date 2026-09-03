@@ -1,445 +1,908 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Nythxion AI - Terms & Privacy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nythxion AI — Legal Center</title>
 
 <style>
+  :root {
+    --bg: #070912;
+    --bg-2: #0b1020;
+    --panel: rgba(17, 23, 42, 0.72);
+    --panel-solid: #11172a;
+    --panel-light: #171e34;
+    --text: #f4f7ff;
+    --muted: #98a2bb;
+    --line: rgba(255,255,255,.09);
+    --blue: #4da3ff;
+    --purple: #8b5cf6;
+    --cyan: #62d8ff;
+    --danger: #ff6b81;
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
   body {
-    font-family: Arial, sans-serif;
-    max-width: 900px;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 15% 0%, rgba(77,163,255,.13), transparent 28rem),
+      radial-gradient(circle at 90% 12%, rgba(139,92,246,.14), transparent 30rem),
+      linear-gradient(180deg, #070912 0%, #090d18 45%, #070912 100%);
+    line-height: 1.75;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+    background-image:
+      linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+
+  a { color: inherit; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--line);
+    background: rgba(7,9,18,.76);
+    backdrop-filter: blur(18px);
+  }
+
+  .nav {
+    max-width: 1180px;
     margin: auto;
-    padding: 40px;
-    line-height: 1.6;
-    background: #0f0f0f;
-    color: #f1f1f1;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
   }
 
-  h1, h2, h3 {
-    color: #ffffff;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    text-decoration: none;
   }
 
-  a {
-    color: #4da3ff;
-  }
-
-  .box {
-    padding: 15px;
-    background: #1a1a1a;
+  .brand-mark {
+    width: 34px;
+    height: 34px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    box-shadow: 0 0 28px rgba(77,163,255,.28);
   }
 
-  .note {
-    padding: 12px;
-    background: #222;
-    border-left: 4px solid #4da3ff;
-    margin-bottom: 20px;
+  .brand span { color: var(--muted); font-weight: 600; }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
   }
 
-  li {
-    margin-bottom: 6px;
+  .nav-links a {
+    padding: 8px 12px;
+    border-radius: 9px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s ease;
+  }
+
+  .nav-links a:hover {
+    color: white;
+    background: rgba(255,255,255,.06);
+  }
+
+  .hero {
+    max-width: 1180px;
+    margin: auto;
+    padding: 90px 28px 55px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 11px;
+    border: 1px solid rgba(98,216,255,.2);
+    border-radius: 999px;
+    color: #b9eaff;
+    background: rgba(98,216,255,.06);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+  }
+
+  .hero h1 {
+    max-width: 900px;
+    margin: 22px 0 14px;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: .98;
+    letter-spacing: -.055em;
+  }
+
+  .gradient-text {
+    background: linear-gradient(100deg, #fff 10%, #8fd8ff 48%, #aa8cff 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  .document-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .meta {
+    padding: 9px 13px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255,255,255,.035);
+    color: #cbd3e7;
+    font-size: 13px;
+  }
+
+  .layout {
+    max-width: 1180px;
+    margin: auto;
+    padding: 0 28px 100px;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 42px;
+    align-items: start;
+  }
+
+  .toc {
+    position: sticky;
+    top: 88px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(12,17,31,.72);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+  }
+
+  .toc-title {
+    margin: 2px 8px 10px;
+    color: #69748e;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .toc a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: .2s ease;
+  }
+
+  .toc a:hover {
+    color: white;
+    background: rgba(77,163,255,.09);
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  .section {
+    position: relative;
+    margin-bottom: 52px;
+    padding: 30px 32px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(17,23,42,.88), rgba(10,14,27,.82));
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: linear-gradient(var(--blue), var(--purple));
+    opacity: .8;
+  }
+
+  .section h2 {
+    margin: 0 0 18px;
+    font-size: 25px;
+    line-height: 1.25;
+    letter-spacing: -.025em;
+  }
+
+  .section h2 span {
+    margin-right: 9px;
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: .08em;
+    vertical-align: middle;
+  }
+
+  .section p {
+    color: #c6cee0;
+    margin: 0 0 16px;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  .section ul {
+    margin: 12px 0 0;
+    padding-left: 23px;
+    color: #c6cee0;
+  }
+
+  .section li {
+    margin: 8px 0;
+    padding-left: 3px;
+  }
+
+  .section li::marker { color: var(--blue); }
+
+  .notice {
+    margin-bottom: 52px;
+    padding: 22px 24px;
+    border: 1px solid rgba(77,163,255,.2);
+    border-radius: 17px;
+    background:
+      radial-gradient(circle at 0 0, rgba(77,163,255,.13), transparent 22rem),
+      rgba(77,163,255,.055);
+    color: #dbeeff;
+  }
+
+  .notice strong {
+    color: white;
+  }
+
+  .document-header {
+    margin: 70px 0 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--line);
+  }
+
+  .document-header:first-child { margin-top: 0; }
+
+  .document-header .label {
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .document-header h2 {
+    margin: 8px 0 5px;
+    font-size: 34px;
+    letter-spacing: -.04em;
+  }
+
+  .document-header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .contact {
+    color: #9dd8ff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .contact:hover { text-decoration: underline; }
+
+  .footer {
+    border-top: 1px solid var(--line);
+    background: rgba(5,7,14,.75);
+  }
+
+  .footer-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 30px 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .back-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(17,23,42,.86);
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+  }
+
+  @media (max-width: 850px) {
+    .nav-links { display: none; }
+
+    .hero {
+      padding-top: 65px;
+    }
+
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    .toc {
+      position: relative;
+      top: 0;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 2px;
+    }
+
+    .toc-title {
+      margin-bottom: 7px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .nav, .hero, .layout, .footer-inner {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+    }
+
+    .section {
+      padding: 24px 21px;
+      border-radius: 16px;
+    }
+
+    .section::before {
+      top: 22px;
+      bottom: 22px;
+    }
+
+    .document-header h2 {
+      font-size: 29px;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+    }
   }
 </style>
-
 </head>
 
-<body>
-
-<div class="box">
-  <h1>Nythxion AI - Terms of Service</h1>
-  <p><strong>Last updated:</strong> August 29, 2026</p>
-</div>
-
-<div class="note">
-  <strong>TL;DR:</strong> Nythxion AI provides AI, moderation, economy, leveling,
-  memory, and utility features. Use of the bot requires compliance with these
-  Terms and applicable law.
-</div>
-
-<h2>1. Overview</h2>
-<p>
-Nythxion AI is a Discord bot providing AI chat features, AI-assisted moderation,
-utility features, leveling, economy systems, user memory, and other server
-functionality.
-</p>
-
-<h2>2. Acceptance</h2>
-<p>
-By adding, accessing, or using Nythxion AI, you agree to these Terms of Service.
-If you do not agree with these Terms, you should remove the bot from your server
-and stop using its features.
-</p>
-
-<h2>3. Proper Use</h2>
-<p>You agree not to use Nythxion AI for:</p>
-
-<ul>
-  <li>Illegal activities</li>
-  <li>Harassment, hate speech, or targeted abuse</li>
-  <li>Spam or intentional disruption of Discord servers</li>
-  <li>Attempting to exploit, reverse engineer, overload, or disrupt the bot</li>
-  <li>Abusing AI or moderation features</li>
-  <li>Attempting to bypass moderation or security systems</li>
-</ul>
-
-<h2>4. AI Features</h2>
-<p>
-AI-generated responses may contain errors, inaccurate information, inappropriate
-content, or other unexpected results. AI-generated content should not be treated
-as professional, legal, medical, financial, or other authoritative advice.
-</p>
-
-<h2>5. AI Moderation</h2>
-<p>
-Nythxion AI uses an AI-assisted moderation system together with local moderation
-filters. Potentially inappropriate messages may be analyzed by an external AI
-service to determine whether they violate the moderation criteria.
-</p>
-
-<p>
-AI moderation is automated and may produce false positives or false negatives.
-Moderation actions may therefore not always be perfectly accurate.
-</p>
-
-<h2>6. Availability</h2>
-<p>
-Nythxion AI is provided on an "as is" and "as available" basis. We aim to maintain
-reliable service but do not guarantee uninterrupted availability, uptime, or
-error-free operation.
-</p>
-
-<h2>7. Changes and Updates</h2>
-<p>
-Features, functionality, moderation systems, and other parts of Nythxion AI may
-be changed, improved, removed, or replaced over time.
-</p>
-
-<h2>8. Termination</h2>
-<p>
-We may restrict or terminate access to Nythxion AI where necessary to prevent
-abuse, protect the service, enforce these Terms, or comply with applicable law.
-Server administrators may remove the bot from their server at any time.
-</p>
-
-<h2>9. Liability</h2>
-<p>
-To the extent permitted by applicable law, Nythxion AI and its operators are not
-responsible for losses, damages, service interruptions, moderation errors, or
-consequences resulting from the use or inability to use the bot.
-</p>
-
-<hr>
-
-<div class="box">
-  <h1>Nythxion AI - Privacy Policy</h1>
-  <p><strong>Last updated:</strong> August 29, 2026</p>
-</div>
-
-<div class="note">
-  <strong>TL;DR:</strong> We process only the data required to provide Nythxion
-  AI's features. We do not sell personal data or use it for advertising. Some
-  message content may be processed by Groq when required for AI features or
-  AI-assisted moderation.
-</div>
-
-<h2>1. Data Controller</h2>
-
-<p>
-For the purposes of applicable data protection law, the operator of Nythxion AI
-acts as the controller for personal data processed directly by Nythxion AI.
-</p>
-
-<p>
-<strong>Project:</strong> Nythxion AI<br>
-<strong>Contact:</strong> nythxionai@gmx.net
-</p>
-
-<p>
-Nythxion AI operated under Nythxion Studios.
-</p>
-
-<h2>2. Data We Process</h2>
-
-<p>
-Depending on which features are used and how a server is configured, Nythxion AI
-may process the following information:
-</p>
-
-<ul>
-  <li>Discord User IDs</li>
-  <li>Discord Server IDs</li>
-  <li>Discord channel IDs where required for configuration</li>
-  <li>Usernames or Discord tags where required for moderation records</li>
-  <li>Messages processed by moderation features</li>
-  <li>Messages or prompts submitted through AI commands</li>
-  <li>User-saved memory created through memory features</li>
-  <li>Leveling and economy information</li>
-  <li>Moderation information such as warnings, timeouts, kicks, and bans</li>
-  <li>Server configuration and feature settings</li>
-</ul>
-
-<h2>3. Why We Process Data</h2>
-
-<p>
-Data may be processed for the following purposes:
-</p>
-
-<ul>
-  <li>Providing requested bot functionality</li>
-  <li>Processing AI requests</li>
-  <li>Performing AI-assisted moderation</li>
-  <li>Applying server moderation actions</li>
-  <li>Maintaining moderation records</li>
-  <li>Providing leveling and economy functionality</li>
-  <li>Providing user memory functionality</li>
-  <li>Maintaining server-specific configuration</li>
-  <li>Protecting the bot against abuse, spam, and misuse</li>
-  <li>Maintaining and improving the reliability and security of the service</li>
-</ul>
-
-<h2>4. Legal Bases</h2>
-
-<p>
-Depending on the specific processing activity and applicable circumstances,
-processing may be based on one or more of the following legal bases under
-Article 6 GDPR:
-</p>
-
-<ul>
-  <li>
-    <strong>Art. 6(1)(b) GDPR:</strong> processing necessary to provide requested
-    functionality or perform an agreement where applicable.
-  </li>
-
-  <li>
-    <strong>Art. 6(1)(f) GDPR:</strong> legitimate interests such as protecting
-    the service, preventing abuse, maintaining security, and operating moderation
-    features, where those interests are not overridden by the rights and freedoms
-    of the affected person.
-  </li>
-
-  <li>
-    <strong>Art. 6(1)(a) GDPR:</strong> consent where processing is specifically
-    based on consent.
-  </li>
-</ul>
-
-<p>
-The applicable legal basis depends on the specific feature and circumstances of
-the processing.
-</p>
-
-<h2>5. AI Processing</h2>
-
-<p>
-When an AI command is used, the relevant prompt or content may be transmitted to
-an external AI provider, currently Groq, to generate the requested response.
-</p>
-
-<p>
-Nythxion AI also uses Groq's AI models for AI-assisted moderation.
-The moderation system first checks messages locally. If a message triggers the
-local moderation filter, the message content may then be sent to the AI
-moderation system for contextual analysis.
-</p>
-
-<p>
-<strong>Not every Discord message is sent to Groq.</strong>
-Messages that do not trigger the applicable AI moderation filter are not sent
-to Groq through this moderation process.
-</p>
-
-<h2>6. AI Moderation Data</h2>
-
-<p>
-When a message triggers AI-assisted moderation, the relevant message content may
-be transmitted to Groq together with the information necessary for the AI model
-to perform the classification.
-</p>
-
-<p>
-The AI moderation system may evaluate categories including profanity, harassment,
-slurs, sexual content, threats, and abusive language.
-</p>
-
-<p>
-The resulting moderation decision may be used to automatically perform actions
-such as deleting a message or applying a temporary timeout.
-</p>
-
-<h2>7. Groq as an External Provider</h2>
-
-<p>
-AI processing is currently provided through the Groq API. Groq states that
-customer data for inference requests is not retained by default. However, Groq
-states that inputs and outputs may be temporarily retained for system
-reliability or abuse monitoring for up to 30 days unless Zero Data Retention
-controls apply. Groq also states that retained customer data is stored in the
-United States.
-</p>
-
-<p>
-Accordingly, message content submitted to Groq may be processed outside the
-European Economic Area. Appropriate information regarding international data
-transfers and applicable safeguards should be considered when configuring and
-using the service.
-</p>
-
-<h2>8. Discord</h2>
-
-<p>
-Nythxion AI operates through Discord. Discord independently processes information
-in connection with its platform and services. Nythxion AI does not control
-Discord's processing of personal data.
-</p>
-
-<p>
-For information about Discord's own data processing, users should consult
-Discord's current privacy documentation.
-</p>
-
-<h2>9. Data Storage</h2>
-
-<p>
-Data stored directly by Nythxion AI is stored on the infrastructure used to
-operate the bot.
-</p>
-
-<p>
-The exact retention period depends on the type of data and the feature involved.
-Data is retained only for as long as reasonably necessary for the applicable
-purpose, unless a longer period is required or permitted by law.
-</p>
-
-<h2>10. Moderation Logs</h2>
-
-<p>
-If a server enables moderation logging, information about moderation actions may
-be stored or sent to the configured moderation-log channel.
-This may include information such as the affected user, moderator, action,
-reason, and timestamp.
-</p>
-
-<p>
-Server administrators are responsible for configuring moderation-log features
-appropriately for their server and should consider their own data-protection
-obligations.
-</p>
-
-<h2>11. User Memory</h2>
-
-<p>
-If a user explicitly uses a memory feature such as <strong>/remember</strong>,
-the information provided through that feature may be stored to provide the
-requested memory functionality.
-</p>
-
-<p>
-Users can request deletion of stored memory and may use available bot commands
-to remove memory where supported.
-</p>
-
-<h2>12. What We Do Not Do</h2>
-
-<ul>
-  <li>We do not sell personal data.</li>
-  <li>We do not use Nythxion AI data for targeted advertising.</li>
-  <li>We do not intentionally track users across unrelated servers.</li>
-  <li>We do not send every Discord message to Groq.</li>
-  <li>We do not intentionally store complete AI conversations permanently as a default feature.</li>
-  <li>We do not intentionally collect personal information that is unnecessary for bot functionality.</li>
-</ul>
-
-<h2>13. Data Deletion</h2>
-
-<p>
-Users may request deletion of personal data stored directly by Nythxion AI by
-contacting us at:
-</p>
-
-<p>
-<strong>nythxionai@gmx.net</strong>
-</p>
-
-<p>
-Deletion requests may be subject to legal obligations, legitimate retention
-requirements, technical limitations, or information that must be retained to
-protect the service or comply with applicable law.
-</p>
-
-<h2>14. Your GDPR Rights</h2>
-
-<p>
-Where the GDPR applies, you may have the following rights, subject to applicable
-legal conditions:
-</p>
-
-<ul>
-  <li>Right of access to personal data</li>
-  <li>Right to rectification of inaccurate data</li>
-  <li>Right to erasure</li>
-  <li>Right to restriction of processing</li>
-  <li>Right to object to certain processing</li>
-  <li>Right to data portability where applicable</li>
-  <li>Right to withdraw consent where processing is based on consent</li>
-</ul>
-
-<p>
-To exercise an applicable right, contact us under:
-<strong>nythxionai@gmx.net</strong>
-</p>
-
-<h2>15. Right to Complain</h2>
-
-<p>
-Where applicable, you have the right to lodge a complaint with a competent data
-protection supervisory authority if you believe that your personal data is being
-processed unlawfully.
-</p>
-
-<h2>16. Automated Decision-Making</h2>
-
-<p>
-Nythxion AI uses automated AI-assisted moderation. Such systems may contribute
-to moderation actions such as message deletion or temporary timeouts.
-AI moderation is not guaranteed to be accurate and may produce false positives
-or false negatives.
-</p>
-
-<p>
-Where applicable law grants users rights relating to solely automated decisions
-with legal or similarly significant effects, those rights will be respected.
-</p>
-
-<h2>17. Security</h2>
-
-<p>
-We take reasonable technical and organizational measures designed to protect
-data against unauthorized access, loss, misuse, or disclosure.
-However, no electronic system or method of transmission can be guaranteed to
-be completely secure.
-</p>
-
-<h2>18. Changes to This Policy</h2>
-
-<p>
-This Privacy Policy may be updated when Nythxion AI's functionality, data
-processing, third-party providers, or legal requirements change.
-The latest version will be published on this page together with its effective
-date.
-</p>
-
-<h2>19. Contact</h2>
-
-<p>
-For privacy questions, data requests, or other privacy-related concerns:
-</p>
-
-<p>
-<strong>Email:</strong> nythxionai@gmx.net
-</p>
+<body id="top">
+
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <div class="brand-mark">N</div>
+      Nythxion <span>Studios</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#terms">Terms</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow"><span class="dot"></span> Nythxion Studios · Legal Center</div>
+  <h1>Terms, privacy &amp;<br><span class="gradient-text">the fine print.</span></h1>
+  <p>
+    Everything you need to know about using Nythxion AI and how the service
+    handles information.
+  </p>
+
+  <div class="document-meta">
+    <div class="meta">Terms updated · August 29, 2026</div>
+    <div class="meta">Privacy updated · August 29, 2026</div>
+  </div>
+</section>
+
+<main class="layout">
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <a href="#terms">Terms of Service</a>
+    <a href="#t1">1. Overview</a>
+    <a href="#t2">2. Acceptance</a>
+    <a href="#t3">3. Proper Use</a>
+    <a href="#t4">4. AI Features</a>
+    <a href="#t5">5. AI Moderation</a>
+    <a href="#t6">6. Availability</a>
+    <a href="#t7">7. Changes</a>
+    <a href="#t8">8. Termination</a>
+    <a href="#t9">9. Liability</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#p1">1. Data Controller</a>
+    <a href="#p2">2. Data We Process</a>
+    <a href="#p3">3. Why We Process Data</a>
+    <a href="#p4">4. Legal Bases</a>
+    <a href="#p5">5. AI Processing</a>
+    <a href="#p7">7. Groq</a>
+    <a href="#p13">13. Data Deletion</a>
+    <a href="#p14">14. GDPR Rights</a>
+    <a href="#p19">19. Contact</a>
+  </aside>
+
+  <article class="content">
+
+    <div id="terms" class="document-header">
+      <div class="label">Document 01</div>
+      <h2>Nythxion AI — Terms of Service</h2>
+      <p>Last updated: August 29, 2026</p>
+    </div>
+
+    <div class="notice">
+      <strong>TL;DR:</strong> Nythxion AI provides AI, moderation, economy, leveling,
+      memory, and utility features. Use of the bot requires compliance with these
+      Terms and applicable law.
+    </div>
+
+    <section class="section" id="t1">
+      <h2><span>01</span> Overview</h2>
+      <p>
+        Nythxion AI is a Discord bot providing AI chat features, AI-assisted moderation,
+        utility features, leveling, economy systems, user memory, and other server functionality.
+      </p>
+    </section>
+
+    <section class="section" id="t2">
+      <h2><span>02</span> Acceptance</h2>
+      <p>
+        By adding, accessing, or using Nythxion AI, you agree to these Terms of Service.
+        If you do not agree with these Terms, you should remove the bot from your server
+        and stop using its features.
+      </p>
+    </section>
+
+    <section class="section" id="t3">
+      <h2><span>03</span> Proper Use</h2>
+      <p>You agree not to use Nythxion AI for:</p>
+      <ul>
+        <li>Illegal activities</li>
+        <li>Harassment, hate speech, or targeted abuse</li>
+        <li>Spam or intentional disruption of Discord servers</li>
+        <li>Attempting to exploit, reverse engineer, overload, or disrupt the bot</li>
+        <li>Abusing AI or moderation features</li>
+        <li>Attempting to bypass moderation or security systems</li>
+      </ul>
+    </section>
+
+    <section class="section" id="t4">
+      <h2><span>04</span> AI Features</h2>
+      <p>
+        AI-generated responses may contain errors, inaccurate information, inappropriate
+        content, or other unexpected results. AI-generated content should not be treated
+        as professional, legal, medical, financial, or other authoritative advice.
+      </p>
+    </section>
+
+    <section class="section" id="t5">
+      <h2><span>05</span> AI Moderation</h2>
+      <p>
+        Nythxion AI uses an AI-assisted moderation system together with local moderation
+        filters. Potentially inappropriate messages may be analyzed by an external AI
+        service to determine whether they violate the moderation criteria.
+      </p>
+      <p>
+        AI moderation is automated and may produce false positives or false negatives.
+        Moderation actions may therefore not always be perfectly accurate.
+      </p>
+    </section>
+
+    <section class="section" id="t6">
+      <h2><span>06</span> Availability</h2>
+      <p>
+        Nythxion AI is provided on an "as is" and "as available" basis. We aim to maintain
+        reliable service but do not guarantee uninterrupted availability, uptime, or
+        error-free operation.
+      </p>
+    </section>
+
+    <section class="section" id="t7">
+      <h2><span>07</span> Changes and Updates</h2>
+      <p>
+        Features, functionality, moderation systems, and other parts of Nythxion AI may
+        be changed, improved, removed, or replaced over time.
+      </p>
+    </section>
+
+    <section class="section" id="t8">
+      <h2><span>08</span> Termination</h2>
+      <p>
+        We may restrict or terminate access to Nythxion AI where necessary to prevent
+        abuse, protect the service, enforce these Terms, or comply with applicable law.
+        Server administrators may remove the bot from their server at any time.
+      </p>
+    </section>
+
+    <section class="section" id="t9">
+      <h2><span>09</span> Liability</h2>
+      <p>
+        To the extent permitted by applicable law, Nythxion AI and its operators are not
+        responsible for losses, damages, service interruptions, moderation errors, or
+        consequences resulting from the use or inability to use the bot.
+      </p>
+    </section>
+
+
+    <div id="privacy" class="document-header">
+      <div class="label">Document 02</div>
+      <h2>Nythxion AI — Privacy Policy</h2>
+      <p>Last updated: August 29, 2026</p>
+    </div>
+
+    <div class="notice">
+      <strong>TL;DR:</strong> We process only the data required to provide Nythxion
+      AI's features. We do not sell personal data or use it for advertising. Some
+      message content may be processed by Groq when required for AI features or
+      AI-assisted moderation.
+    </div>
+
+    <section class="section" id="p1">
+      <h2><span>01</span> Data Controller</h2>
+      <p>
+        For the purposes of applicable data protection law, the operator of Nythxion AI
+        acts as the controller for personal data processed directly by Nythxion AI.
+      </p>
+      <p>
+        <strong>Project:</strong> Nythxion AI<br>
+        <strong>Contact:</strong>
+        <a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a>
+      </p>
+      <p>Nythxion AI operated under Nythxion Studios.</p>
+    </section>
+
+    <section class="section" id="p2">
+      <h2><span>02</span> Data We Process</h2>
+      <p>
+        Depending on which features are used and how a server is configured, Nythxion AI
+        may process the following information:
+      </p>
+      <ul>
+        <li>Discord User IDs</li>
+        <li>Discord Server IDs</li>
+        <li>Discord channel IDs where required for configuration</li>
+        <li>Usernames or Discord tags where required for moderation records</li>
+        <li>Messages processed by moderation features</li>
+        <li>Messages or prompts submitted through AI commands</li>
+        <li>User-saved memory created through memory features</li>
+        <li>Leveling and economy information</li>
+        <li>Moderation information such as warnings, timeouts, kicks, and bans</li>
+        <li>Server configuration and feature settings</li>
+      </ul>
+    </section>
+
+    <section class="section" id="p3">
+      <h2><span>03</span> Why We Process Data</h2>
+      <p>Data may be processed for the following purposes:</p>
+      <ul>
+        <li>Providing requested bot functionality</li>
+        <li>Processing AI requests</li>
+        <li>Performing AI-assisted moderation</li>
+        <li>Applying server moderation actions</li>
+        <li>Maintaining moderation records</li>
+        <li>Providing leveling and economy functionality</li>
+        <li>Providing user memory functionality</li>
+        <li>Maintaining server-specific configuration</li>
+        <li>Protecting the bot against abuse, spam, and misuse</li>
+        <li>Maintaining and improving the reliability and security of the service</li>
+      </ul>
+    </section>
+
+    <section class="section" id="p4">
+      <h2><span>04</span> Legal Bases</h2>
+      <p>
+        Depending on the specific processing activity and applicable circumstances,
+        processing may be based on one or more of the following legal bases under
+        Article 6 GDPR:
+      </p>
+      <ul>
+        <li>
+          <strong>Art. 6(1)(b) GDPR:</strong> processing necessary to provide requested
+          functionality or perform an agreement where applicable.
+        </li>
+        <li>
+          <strong>Art. 6(1)(f) GDPR:</strong> legitimate interests such as protecting
+          the service, preventing abuse, maintaining security, and operating moderation
+          features, where those interests are not overridden by the rights and freedoms
+          of the affected person.
+        </li>
+        <li>
+          <strong>Art. 6(1)(a) GDPR:</strong> consent where processing is specifically
+          based on consent.
+        </li>
+      </ul>
+      <p>
+        The applicable legal basis depends on the specific feature and circumstances of
+        the processing.
+      </p>
+    </section>
+
+    <section class="section" id="p5">
+      <h2><span>05</span> AI Processing</h2>
+      <p>
+        When an AI command is used, the relevant prompt or content may be transmitted to
+        an external AI provider, currently Groq, to generate the requested response.
+      </p>
+      <p>
+        Nythxion AI also uses Groq's AI models for AI-assisted moderation.
+        The moderation system first checks messages locally. If a message triggers the
+        local moderation filter, the message content may then be sent to the AI
+        moderation system for contextual analysis.
+      </p>
+      <p>
+        <strong>Not every Discord message is sent to Groq.</strong>
+        Messages that do not trigger the applicable AI moderation filter are not sent
+        to Groq through this moderation process.
+      </p>
+    </section>
+
+    <section class="section" id="p6">
+      <h2><span>06</span> AI Moderation Data</h2>
+      <p>
+        When a message triggers AI-assisted moderation, the relevant message content may
+        be transmitted to Groq together with the information necessary for the AI model
+        to perform the classification.
+      </p>
+      <p>
+        The AI moderation system may evaluate categories including profanity, harassment,
+        slurs, sexual content, threats, and abusive language.
+      </p>
+      <p>
+        The resulting moderation decision may be used to automatically perform actions
+        such as deleting a message or applying a temporary timeout.
+      </p>
+    </section>
+
+    <section class="section" id="p7">
+      <h2><span>07</span> Groq as an External Provider</h2>
+      <p>
+        AI processing is currently provided through the Groq API. Groq states that
+        customer data for inference requests is not retained by default. However, Groq
+        states that inputs and outputs may be temporarily retained for system
+        reliability or abuse monitoring for up to 30 days unless Zero Data Retention
+        controls apply. Groq also states that retained customer data is stored in the
+        United States.
+      </p>
+      <p>
+        Accordingly, message content submitted to Groq may be processed outside the
+        European Economic Area. Appropriate information regarding international data
+        transfers and applicable safeguards should be considered when configuring and
+        using the service.
+      </p>
+    </section>
+
+    <section class="section" id="p8">
+      <h2><span>08</span> Discord</h2>
+      <p>
+        Nythxion AI operates through Discord. Discord independently processes information
+        in connection with its platform and services. Nythxion AI does not control
+        Discord's processing of personal data.
+      </p>
+      <p>
+        For information about Discord's own data processing, users should consult
+        Discord's current privacy documentation.
+      </p>
+    </section>
+
+    <section class="section" id="p9">
+      <h2><span>09</span> Data Storage</h2>
+      <p>
+        Data stored directly by Nythxion AI is stored on the infrastructure used to
+        operate the bot.
+      </p>
+      <p>
+        The exact retention period depends on the type of data and the feature involved.
+        Data is retained only for as long as reasonably necessary for the applicable
+        purpose, unless a longer period is required or permitted by law.
+      </p>
+    </section>
+
+    <section class="section" id="p10">
+      <h2><span>10</span> Moderation Logs</h2>
+      <p>
+        If a server enables moderation logging, information about moderation actions may
+        be stored or sent to the configured moderation-log channel.
+        This may include information such as the affected user, moderator, action,
+        reason, and timestamp.
+      </p>
+      <p>
+        Server administrators are responsible for configuring moderation-log features
+        appropriately for their server and should consider their own data-protection
+        obligations.
+      </p>
+    </section>
+
+    <section class="section" id="p11">
+      <h2><span>11</span> User Memory</h2>
+      <p>
+        If a user explicitly uses a memory feature such as <strong>/remember</strong>,
+        the information provided through that feature may be stored to provide the
+        requested memory functionality.
+      </p>
+      <p>
+        Users can request deletion of stored memory and may use available bot commands
+        to remove memory where supported.
+      </p>
+    </section>
+
+    <section class="section" id="p12">
+      <h2><span>12</span> What We Do Not Do</h2>
+      <ul>
+        <li>We do not sell personal data.</li>
+        <li>We do not use Nythxion AI data for targeted advertising.</li>
+        <li>We do not intentionally track users across unrelated servers.</li>
+        <li>We do not send every Discord message to Groq.</li>
+        <li>We do not intentionally store complete AI conversations permanently as a default feature.</li>
+        <li>We do not intentionally collect personal information that is unnecessary for bot functionality.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="p13">
+      <h2><span>13</span> Data Deletion</h2>
+      <p>
+        Users may request deletion of personal data stored directly by Nythxion AI by
+        contacting us at:
+      </p>
+      <p>
+        <strong><a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a></strong>
+      </p>
+      <p>
+        Deletion requests may be subject to legal obligations, legitimate retention
+        requirements, technical limitations, or information that must be retained to
+        protect the service or comply with applicable law.
+      </p>
+    </section>
+
+    <section class="section" id="p14">
+      <h2><span>14</span> Your GDPR Rights</h2>
+      <p>
+        Where the GDPR applies, you may have the following rights, subject to applicable
+        legal conditions:
+      </p>
+      <ul>
+        <li>Right of access to personal data</li>
+        <li>Right to rectification of inaccurate data</li>
+        <li>Right to erasure</li>
+        <li>Right to restriction of processing</li>
+        <li>Right to object to certain processing</li>
+        <li>Right to data portability where applicable</li>
+        <li>Right to withdraw consent where processing is based on consent</li>
+      </ul>
+      <p>
+        To exercise an applicable right, contact us under:
+        <strong><a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a></strong>
+      </p>
+    </section>
+
+    <section class="section" id="p15">
+      <h2><span>15</span> Right to Complain</h2>
+      <p>
+        Where applicable, you have the right to lodge a complaint with a competent data
+        protection supervisory authority if you believe that your personal data is being
+        processed unlawfully.
+      </p>
+    </section>
+
+    <section class="section" id="p16">
+      <h2><span>16</span> Automated Decision-Making</h2>
+      <p>
+        Nythxion AI uses automated AI-assisted moderation. Such systems may contribute
+        to moderation actions such as message deletion or temporary timeouts.
+        AI moderation is not guaranteed to be accurate and may produce false positives
+        or false negatives.
+      </p>
+      <p>
+        Where applicable law grants users rights relating to solely automated decisions
+        with legal or similarly significant effects, those rights will be respected.
+      </p>
+    </section>
+
+    <section class="section" id="p17">
+      <h2><span>17</span> Security</h2>
+      <p>
+        We take reasonable technical and organizational measures designed to protect
+        data against unauthorized access, loss, misuse, or disclosure.
+        However, no electronic system or method of transmission can be guaranteed to
+        be completely secure.
+      </p>
+    </section>
+
+    <section class="section" id="p18">
+      <h2><span>18</span> Changes to This Policy</h2>
+      <p>
+        This Privacy Policy may be updated when Nythxion AI's functionality, data
+        processing, third-party providers, or legal requirements change.
+        The latest version will be published on this page together with its effective date.
+      </p>
+    </section>
+
+    <section class="section" id="p19">
+      <h2><span>19</span> Contact</h2>
+      <p>
+        For privacy questions, data requests, or other privacy-related concerns:
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a>
+      </p>
+    </section>
+
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>© 2026 Nythxion Studios · Nythxion AI</div>
+    <div>Legal Center · Last updated August 29, 2026</div>
+  </div>
+</footer>
+
+<a class="back-top" href="#top" aria-label="Back to top">↑</a>
 
 </body>
 </html>
