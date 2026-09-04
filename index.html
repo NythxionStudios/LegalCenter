@@ -203,10 +203,12 @@
     background: rgba(12,17,31,.72);
     backdrop-filter: blur(16px);
     box-shadow: var(--shadow);
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
   }
 
   .toc-title {
-    margin: 2px 8px 10px;
+    margin: 16px 8px 8px;
     color: #69748e;
     font-size: 11px;
     font-weight: 900;
@@ -214,14 +216,31 @@
     text-transform: uppercase;
   }
 
+  .toc-title:first-child { margin-top: 2px; }
+
+  .toc-dept {
+    margin: 4px 8px 2px;
+    color: #8fd8ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .85;
+  }
+
   .toc a {
     display: block;
-    padding: 8px 10px;
+    padding: 7px 10px;
     border-radius: 8px;
     color: var(--muted);
     text-decoration: none;
     font-size: 13px;
     transition: .2s ease;
+  }
+
+  .toc a.toc-sub {
+    padding-left: 18px;
+    font-size: 12.5px;
   }
 
   .toc a:hover {
@@ -333,6 +352,33 @@
     font-size: 14px;
   }
 
+  .dept-header {
+    margin: 56px 0 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .dept-header .label {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .dept-header h3 {
+    margin: 8px 0 5px;
+    font-size: 27px;
+    letter-spacing: -.03em;
+  }
+
+  .dept-header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 14px;
+    max-width: 640px;
+  }
+
   .contact {
     color: #9dd8ff;
     font-weight: 700;
@@ -388,6 +434,7 @@
     .toc {
       position: relative;
       top: 0;
+      max-height: none;
     }
 
     .toc a {
@@ -395,7 +442,11 @@
       margin: 2px;
     }
 
-    .toc-title {
+    .toc a.toc-sub {
+      padding-left: 10px;
+    }
+
+    .toc-title, .toc-dept {
       margin-bottom: 7px;
     }
   }
@@ -424,6 +475,10 @@
       font-size: 29px;
     }
 
+    .dept-header h3 {
+      font-size: 22px;
+    }
+
     .footer-inner {
       flex-direction: column;
     }
@@ -449,8 +504,8 @@
 <section class="hero">
   <h1>Legal<br><span class="gradient-text">Center</span></h1>
   <p>
-    Everything you need to know about using Nythxion AI and how the service
-    handles information.
+    Everything you need to know about using Nythxion Studios' projects, Nythxion AI,
+    Nythxion Designs, and Nythxion Open-Source - and how information is handled.
   </p>
 
   <div class="document-meta">
@@ -463,59 +518,125 @@
   <aside class="toc">
     <div class="toc-title">On this page</div>
     <a href="#terms">Terms of Service</a>
-    <a href="#t1">1. Overview</a>
-    <a href="#t2">2. Acceptance</a>
-    <a href="#t3">3. Proper Use</a>
-    <a href="#t4">4. AI Features</a>
-    <a href="#t5">5. AI Moderation</a>
-    <a href="#t6">6. Availability</a>
-    <a href="#t7">7. Changes</a>
-    <a href="#t8">8. Termination</a>
-    <a href="#t9">9. Liability</a>
-    <a href="#privacy">Privacy Policy</a>
-    <a href="#p1">1. Data Controller</a>
-    <a href="#p2">2. Data We Process</a>
-    <a href="#p3">3. Why We Process Data</a>
-    <a href="#p4">4. Legal Bases</a>
-    <a href="#p5">5. AI Processing</a>
-    <a href="#p7">7. Groq</a>
-    <a href="#p13">13. Data Deletion</a>
-    <a href="#p14">14. GDPR Rights</a>
-    <a href="#p19">19. Contact</a>
+
+    <div class="toc-dept">General</div>
+    <a class="toc-sub" href="#tg1">Overview</a>
+    <a class="toc-sub" href="#tg2">Acceptance</a>
+    <a class="toc-sub" href="#tg3">Changes &amp; Updates</a>
+    <a class="toc-sub" href="#tg4">Termination</a>
+    <a class="toc-sub" href="#tg5">Liability</a>
+
+    <div class="toc-dept">Nythxion AI</div>
+    <a class="toc-sub" href="#tai1">Proper Use</a>
+    <a class="toc-sub" href="#tai2">AI Features</a>
+    <a class="toc-sub" href="#tai3">AI Moderation</a>
+    <a class="toc-sub" href="#tai4">Availability</a>
+
+    <div class="toc-dept">Nythxion Designs</div>
+    <a class="toc-sub" href="#tds1">Overview</a>
+    <a class="toc-sub" href="#tds2">Copyright &amp; Usage</a>
+    <a class="toc-sub" href="#tds3">Credit</a>
+
+    <div class="toc-dept">Nythxion Open-Source</div>
+    <a class="toc-sub" href="#tos1">Overview</a>
+    <a class="toc-sub" href="#tos2">Licensing</a>
+    <a class="toc-sub" href="#tos3">Copyright &amp; Branding</a>
+    <a class="toc-sub" href="#tos4">Credit</a>
+
+    <div class="toc-dept">Privacy Policy</div>
+    <a class="toc-sub" href="#p1">Data Controller</a>
+    <a class="toc-sub" href="#p2">Data We Process</a>
+    <a class="toc-sub" href="#p3">Why We Process Data</a>
+    <a class="toc-sub" href="#p4">Legal Bases</a>
+    <a class="toc-sub" href="#p5">AI Processing</a>
+    <a class="toc-sub" href="#p7">Groq</a>
+    <a class="toc-sub" href="#p13">Data Deletion</a>
+    <a class="toc-sub" href="#p14">GDPR Rights</a>
+    <a class="toc-sub" href="#p19">Contact</a>
   </aside>
 
   <article class="content">
 
     <div id="terms" class="document-header">
-      <h2>Nythxion AI - Terms of Service</h2>
+      <div class="label">Nythxion Studios</div>
+      <h2>Terms of Service</h2>
       <p>Last updated: September 4, 2026</p>
     </div>
 
     <div class="notice">
-      <strong>TL;DR:</strong> Nythxion AI provides AI, moderation, economy, leveling,
-      memory, and utility features. Use of the bot requires compliance with these
-      Terms and applicable law.
+      <strong>TL;DR:</strong> These Terms apply to everything operated under Nythxion
+      Studios. The General section below applies studio-wide. Each project
+      <strong>Nythxion AI</strong>, <strong>Nythxion Designs</strong>, and
+      <strong>Nythxion Open-Source</strong> - also has its own terms further down this
+      page that apply in addition to the General section.
     </div>
 
-    <section class="section" id="t1">
+    <div class="dept-header">
+      <div class="label">Studio-wide</div>
+      <h3>General</h3>
+      <p>Applies to all Nythxion Studios projects, including Nythxion AI, Nythxion Designs, and Nythxion Open-Source.</p>
+    </div>
+
+    <section class="section" id="tg1">
       <h2><span>01</span> Overview</h2>
       <p>
-        Nythxion AI is a Discord bot providing AI chat features, AI-assisted moderation,
-        utility features, leveling, economy systems, user memory, and other server functionality.
+        Nythxion Studios operates multiple projects, currently organized under two
+        departments: <strong>Nythxion Development</strong>, which includes Nythxion AI
+        and Nythxion Open-Source, and <strong>Nythxion Designs</strong>, our creative
+        project. This section sets out the terms that apply across all Nythxion Studios
+        projects. Terms specific to an individual project are set out separately below
+        and apply in addition to this section.
       </p>
     </section>
 
-    <section class="section" id="t2">
+    <section class="section" id="tg2">
       <h2><span>02</span> Acceptance</h2>
       <p>
-        By adding, accessing, or using Nythxion AI, you agree to these Terms of Service.
-        If you do not agree with these Terms, you should remove the bot from your server
-        and stop using its features.
+        By adding, accessing, or using any Nythxion Studios project - including Nythxion
+        AI, requesting work from Nythxion Designs, or using code released through
+        Nythxion Open-Source - you agree to these Terms, including the terms specific to
+        that project. If you do not agree with these Terms, you should stop using the
+        relevant project.
       </p>
     </section>
 
-    <section class="section" id="t3">
-      <h2><span>03</span> Proper Use</h2>
+    <section class="section" id="tg3">
+      <h2><span>03</span> Changes and Updates</h2>
+      <p>
+        Features, functionality, and other parts of any Nythxion Studios project may be
+        changed, improved, removed, or replaced over time. These Terms may also be
+        updated to reflect such changes; the latest version will be published on this
+        page together with its effective date.
+      </p>
+    </section>
+
+    <section class="section" id="tg4">
+      <h2><span>04</span> Termination</h2>
+      <p>
+        We may restrict or terminate access to a Nythxion Studios project where
+        necessary to prevent abuse, protect the project, enforce these Terms, or comply
+        with applicable law. Server administrators may remove Nythxion AI from their
+        server at any time.
+      </p>
+    </section>
+
+    <section class="section" id="tg5">
+      <h2><span>05</span> Liability</h2>
+      <p>
+        To the extent permitted by applicable law, Nythxion Studios and its operators
+        are not responsible for losses, damages, service interruptions, or consequences
+        resulting from the use of, or inability to use, any Nythxion Studios project.
+      </p>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Nythxion Development</div>
+      <h3>Nythxion AI</h3>
+      <p>Applies specifically to the Nythxion AI Discord bot, in addition to the General section above.</p>
+    </div>
+
+    <section class="section" id="tai1">
+      <h2><span>01</span> Proper Use</h2>
       <p>You agree not to use Nythxion AI for:</p>
       <ul>
         <li>Illegal activities</li>
@@ -527,17 +648,19 @@
       </ul>
     </section>
 
-    <section class="section" id="t4">
-      <h2><span>04</span> AI Features</h2>
+    <section class="section" id="tai2">
+      <h2><span>02</span> AI Features</h2>
       <p>
+        Nythxion AI provides AI chat features, AI-assisted moderation, utility features,
+        leveling, economy systems, user memory, and other server functionality.
         AI-generated responses may contain errors, inaccurate information, inappropriate
         content, or other unexpected results. AI-generated content should not be treated
         as professional, legal, medical, financial, or other authoritative advice.
       </p>
     </section>
 
-    <section class="section" id="t5">
-      <h2><span>05</span> AI Moderation</h2>
+    <section class="section" id="tai3">
+      <h2><span>03</span> AI Moderation</h2>
       <p>
         Nythxion AI uses an AI-assisted moderation system together with local moderation
         filters. Potentially inappropriate messages may be analyzed by an external AI
@@ -549,52 +672,140 @@
       </p>
     </section>
 
-    <section class="section" id="t6">
-      <h2><span>06</span> Availability</h2>
+    <section class="section" id="tai4">
+      <h2><span>04</span> Availability</h2>
       <p>
-        Nythxion AI is provided on an "as is" and "as available" basis. We aim to maintain
-        reliable service but do not guarantee uninterrupted availability, uptime, or
-        error-free operation.
+        Nythxion AI is provided on an "as is" and "as available" basis. We aim to
+        maintain reliable service but do not guarantee uninterrupted availability,
+        uptime, or error-free operation.
       </p>
     </section>
 
-    <section class="section" id="t7">
-      <h2><span>07</span> Changes and Updates</h2>
+    <div class="dept-header">
+      <div class="label">Nythxion Studios</div>
+      <h3>Nythxion Designs</h3>
+      <p>Applies specifically to work produced by Nythxion Designs, in addition to the General section above.</p>
+    </div>
+
+    <section class="section" id="tds1">
+      <h2><span>01</span> Overview</h2>
       <p>
-        Features, functionality, moderation systems, and other parts of Nythxion AI may
-        be changed, improved, removed, or replaced over time.
+        Nythxion Designs is a creative project operated under Nythxion Studios, created
+        to support communities and projects with logos, graphics, branding, and other
+        visual materials. Our work is provided voluntarily and without any required
+        payment. Like our other Nythxion Studios projects, Nythxion Designs exists
+        primarily to support other communities and projects out of friendliness.
       </p>
     </section>
 
-    <section class="section" id="t8">
-      <h2><span>08</span> Termination</h2>
+    <section class="section" id="tds2">
+      <h2><span>02</span> Copyright &amp; Usage</h2>
       <p>
-        We may restrict or terminate access to Nythxion AI where necessary to prevent
-        abuse, protect the service, enforce these Terms, or comply with applicable law.
-        Server administrators may remove the bot from their server at any time.
+        All original designs created by Nythxion Designs remain copyrighted by Nythxion
+        Designs / Nythxion Studios, unless otherwise agreed in writing.
+      </p>
+      <p>
+        The requesting project receives permission to use the completed artwork for its
+        own project, including on Discord, social media, websites, and other related
+        platforms. This permission does not transfer copyright or ownership.
+      </p>
+      <p>
+        The artwork may not be resold, redistributed, claimed as independently created,
+        or reused for another project without permission.
       </p>
     </section>
 
-    <section class="section" id="t9">
-      <h2><span>09</span> Liability</h2>
+    <section class="section" id="tds3">
+      <h2><span>03</span> Credit</h2>
+      <p>A copyright notice may state:</p>
+      <ul>
+        <li><strong>Designed by Nythxion Designs / Nythxion Studios</strong></li>
+      </ul>
       <p>
-        To the extent permitted by applicable law, Nythxion AI and its operators are not
-        responsible for losses, damages, service interruptions, moderation errors, or
-        consequences resulting from the use or inability to use the bot.
+        The credit must not be placed directly on the artwork itself. It should only
+        appear separately, such as in a copyright notice, project information page,
+        credits section, or similar location.
+      </p>
+      <p>
+        If specifically agreed upon, the artwork may instead be credited as being
+        created for the respective project. Third-party assets used in a design remain
+        subject to their respective licenses and copyrights.
+      </p>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Nythxion Development</div>
+      <h3>Nythxion Open-Source</h3>
+      <p>Applies specifically to projects released by Nythxion Open-Source, in addition to the General section above.</p>
+    </div>
+
+    <section class="section" id="tos1">
+      <h2><span>01</span> Overview</h2>
+      <p>
+        Nythxion Open-Source is a development project operated under Nythxion
+        Development, created to share useful tools, projects, and source code with the
+        community. Our open-source projects are made available so developers and
+        communities can use, learn from, modify, and build upon them.
+      </p>
+    </section>
+
+    <section class="section" id="tos2">
+      <h2><span>02</span> Licensing</h2>
+      <p>
+        Unless stated otherwise, projects published under Nythxion Open-Source are
+        released under the MIT License. The MIT License allows you to:
+      </p>
+      <ul>
+        <li>Use the software for personal or commercial projects</li>
+        <li>Copy and distribute the source code</li>
+        <li>Modify and build upon the software</li>
+        <li>Publish your own versions or projects using the code</li>
+        <li>Include the software in larger projects</li>
+      </ul>
+      <p>
+        The original copyright notice and license must remain included with copies or
+        substantial portions of the software.
+      </p>
+    </section>
+
+    <section class="section" id="tos3">
+      <h2><span>03</span> Copyright &amp; Branding</h2>
+      <p>
+        While the source code is open-source, Nythxion Studios, Nythxion Development,
+        Nythxion Open-Source, and their respective logos and branding remain the
+        property of Nythxion Studios unless otherwise stated.
+      </p>
+      <p>
+        The MIT License applies to the code, not to Nythxion branding, logos, artwork,
+        or other materials included with a project. You may modify the code and create
+        derivative projects, but you may not imply that your project is officially
+        created, operated, or endorsed by Nythxion Studios without permission.
+      </p>
+    </section>
+
+    <section class="section" id="tos4">
+      <h2><span>04</span> Credit</h2>
+      <p>
+        Credit is appreciated but generally not required under the MIT License.
+        Individual projects may contain additional requirements or notices — always
+        check the project's <code>LICENSE</code> and <code>README.md</code> for its
+        specific terms.
       </p>
     </section>
 
 
     <div id="privacy" class="document-header">
+      <div class="label">Nythxion Development</div>
       <h2>Nythxion AI - Privacy Policy</h2>
       <p>Last updated: September 4, 2026</p>
     </div>
 
     <div class="notice">
-      <strong>TL;DR:</strong> We process only the data required to provide Nythxion
-      AI's features. We do not sell personal data or use it for advertising. Some
-      message content may be processed by Groq when required for AI features or
-      AI-assisted moderation.
+      <strong>TL;DR:</strong> This Privacy Policy describes how <strong>Nythxion AI</strong>
+      specifically processes data as a Discord bot. Nythxion Designs and Nythxion
+      Open-Source do not operate through Discord and are not covered by this policy. We
+      do not sell personal data or use it for advertising. Some message content may be
+      processed by Groq when required for AI features or AI-assisted moderation.
     </div>
 
     <section class="section" id="p1">
@@ -608,7 +819,7 @@
         <strong>Contact:</strong>
         <a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a>
       </p>
-      <p>Nythxion AI operated under Nythxion Studios.</p>
+      <p>Nythxion AI is operated under Nythxion Development, part of Nythxion Studios.</p>
     </section>
 
     <section class="section" id="p2">
@@ -892,7 +1103,7 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <div>© 2026 Nythxion Studios · Nythxion AI</div>
+    <div>© 2026 Nythxion Studios · Nythxion AI · Nythxion Developments · Nythxion Designs · Nythxion Open-Source</div>
     <div>Legal Center · Last updated September 4, 2026</div>
   </div>
 </footer>
