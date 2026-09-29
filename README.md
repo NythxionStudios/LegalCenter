@@ -1,4 +1,4 @@
-# Nythxion Studios - Legal Documents
+# Nythxion Studios - Page
 
 This repository contains official legal documents and policies for **Nythxion Studios**, including our Terms of Service and related documents.
 
