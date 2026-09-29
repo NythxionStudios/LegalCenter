@@ -483,6 +483,371 @@
       flex-direction: column;
     }
   }
+
+  :root {
+    --bg: #070912;
+    --surface: #0c1020;
+    --surface-hover: #10162a;
+    --surface-soft: #0a0f1d;
+    --border: #202943;
+    --text: #f4f7ff;
+    --muted: #aeb8d0;
+    --text-muted: #7f8aa5;
+    --blue: #4da3ff;
+    --purple: #8b5cf6;
+    --scrollbar-thumb: #242d47;
+    --scrollbar-thumb-hover: #303b5d;
+    --line: var(--border);
+    --shadow: 0 16px 38px rgba(0,0,0,.18);
+  }
+
+  * {
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: var(--scrollbar-thumb);
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+  *::-webkit-scrollbar-corner { background: transparent; }
+
+  html { scroll-padding-top: 90px; }
+
+  body {
+    background: var(--bg);
+    line-height: 1.68;
+  }
+
+  body::before { display: none; }
+
+  .topbar {
+    border-bottom-color: var(--border);
+    background: rgba(12,16,32,.96);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav {
+    min-height: 64px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .brand {
+    gap: 10px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .brand img {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border: 1px solid #2a3858;
+    border-radius: 9px;
+    background: #11172a;
+    object-fit: contain;
+  }
+
+  .nav-links { gap: 4px; }
+
+  .nav-links a {
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: #aeb8d0;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    border-color: var(--border);
+    background: var(--surface-hover);
+    color: var(--text);
+  }
+
+  .hero {
+    padding-top: 66px;
+    padding-bottom: 38px;
+  }
+
+  .hero h1 {
+    max-width: 760px;
+    font-size: 58px;
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .gradient-text {
+    background: none;
+    color: var(--blue);
+  }
+
+  .hero p { font-size: 16px; }
+
+  .document-meta { margin-top: 22px; }
+
+  .meta {
+    padding: 7px 10px;
+    border-color: var(--border);
+    border-radius: 7px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .layout {
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 20px;
+    padding-bottom: 76px;
+  }
+
+  .toc {
+    top: 80px;
+    padding: 12px;
+    border-color: var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .toc-title {
+    margin: 11px 8px 6px;
+    color: var(--text-muted);
+    letter-spacing: .1em;
+  }
+
+  .toc-dept {
+    color: #79bcff;
+    letter-spacing: .06em;
+  }
+
+  .toc a {
+    padding: 7px 9px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
+  }
+
+  .toc a.toc-sub { font-size: 11.5px; }
+
+  .toc a:hover,
+  .toc a:focus-visible {
+    border-color: var(--border);
+    background: var(--surface-hover);
+    color: var(--text);
+  }
+
+  .document-header {
+    margin: 52px 0 18px;
+    padding-top: 13px;
+    border-top-color: var(--border);
+  }
+
+  .document-header:first-child { margin-top: 0; }
+
+  .document-header .label,
+  .dept-header .label {
+    color: var(--blue);
+    letter-spacing: .1em;
+  }
+
+  .document-header h2 {
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+
+  .dept-header {
+    margin: 38px 0 16px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  .dept-header h3 { letter-spacing: 0; }
+
+  .notice {
+    margin-bottom: 24px;
+    padding: 16px 18px;
+    border-color: #263858;
+    border-radius: 8px;
+    background: #0c1424;
+    color: #cbd8ed;
+  }
+
+  .notice strong { color: var(--text); }
+
+  .section {
+    margin-bottom: 13px;
+    padding: 21px 24px;
+    border-color: var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    box-shadow: none;
+    transition: border-color .15s ease, background .15s ease;
+  }
+
+  .section:hover {
+    border-color: #2b3855;
+    background: #0d1324;
+  }
+
+  .section::before {
+    top: 19px;
+    bottom: 19px;
+    background: var(--blue);
+    opacity: .72;
+  }
+
+  .section h2 {
+    margin-bottom: 12px;
+    font-size: 19px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+
+  .section h2 span {
+    color: var(--blue);
+    font-size: 11px;
+    letter-spacing: .04em;
+  }
+
+  .section p,
+  .section ul { color: #c3cde1; }
+
+  .section p { margin-bottom: 12px; }
+
+  .section ul {
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+
+  .section li { margin: 6px 0; }
+
+  .section li::marker { color: var(--blue); }
+
+  .contact {
+    color: #79bcff;
+    transition: color .15s ease;
+  }
+
+  .contact:hover { color: #a9d5ff; }
+
+  code {
+    padding: 2px 5px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-soft);
+    color: #b8d9ff;
+  }
+
+  .footer {
+    border-top-color: var(--border);
+    background: var(--surface);
+  }
+
+  .footer-inner { padding-top: 22px; padding-bottom: 22px; }
+
+  .back-top {
+    width: 40px;
+    height: 40px;
+    border-color: var(--border);
+    border-radius: 8px;
+    background: #11172a;
+    box-shadow: none;
+    transition: background .15s ease, border-color .15s ease;
+  }
+
+  .back-top:hover {
+    border-color: #33405f;
+    background: var(--surface-hover);
+  }
+
+  [id] { scroll-margin-top: 90px; }
+
+  @media (max-width: 850px) {
+    html { scroll-padding-top: 120px; }
+
+    .nav {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .layout { grid-template-columns: 1fr; }
+
+    .toc {
+      position: relative;
+      top: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      max-height: none;
+    }
+
+    .toc-title,
+    .toc-dept { flex-basis: 100%; }
+
+    .toc a { display: inline-flex; align-items: center; }
+    .toc a.toc-sub { padding-left: 9px; }
+  }
+
+  @media (max-width: 560px) {
+    .nav, .hero, .layout, .footer-inner {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .hero { padding-top: 52px; }
+    .hero h1 { font-size: 44px; }
+    .hero p { font-size: 15px; }
+
+    .layout { gap: 16px; }
+
+    .section { padding: 19px 20px; }
+    .section::before { top: 17px; bottom: 17px; }
+    .document-header h2 { font-size: 26px; }
+    .dept-header h3 { font-size: 21px; }
+    .footer-inner { flex-direction: column; }
+  }
+
+  .hero,
+  .layout > .toc,
+  .layout > .content {
+    animation: page-enter .5s cubic-bezier(.22,1,.36,1) both;
+  }
+
+  .layout > .toc { animation-delay: 70ms; }
+  .layout > .content { animation-delay: 120ms; }
+
+  @keyframes page-enter {
+    0% { opacity: 0; transform: translate3d(0, 12px, 0) rotate(-.18deg); }
+    72% { opacity: 1; transform: translate3d(0, -1px, 0) rotate(.08deg); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero,
+    .layout > .toc,
+    .layout > .content { animation: none; }
+  }
 </style>
 </head>
 
@@ -491,6 +856,7 @@
 <header class="topbar">
   <nav class="nav">
     <a class="brand" href="#top">
+      <img src="Logo.png" alt="" width="34" height="34">
       Nythxion <span>Studios</span>
     </a>
 
@@ -510,7 +876,7 @@
   </p>
 
   <div class="document-meta">
-    <div class="meta">Last updated: September 4, 2026</div>
+    <div class="meta">Last updated: September 29, 2026</div>
   </div>
 </section>
 
@@ -561,7 +927,7 @@
     <div id="terms" class="document-header">
       <div class="label">Nythxion Studios</div>
       <h2>Terms of Service</h2>
-      <p>Last updated: September 4, 2026</p>
+      <p>Last updated: September 29, 2026</p>
     </div>
 
     <div class="notice">
@@ -798,7 +1164,7 @@
     <div id="privacy" class="document-header">
       <div class="label">Nythxion AI</div>
       <h2>Privacy Policy</h2>
-      <p>Last updated: September 4, 2026</p>
+      <p>Last updated: September 29, 2026</p>
     </div>
 
     <div class="notice">
@@ -1105,7 +1471,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div>© 2026 Nythxion Studios ·  Nythxion Designs · Nythxion Development · Nythxion AI · Nythxion Open-Source</div>
-    <div>Legal Center · Last updated September 4, 2026</div>
+    <div>Legal Center · Last updated September 29, 2026</div>
   </div>
 </footer>
 
