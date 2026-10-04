@@ -9,7 +9,7 @@
                O F F I C I A L  W E B S I T E
 ```
 
-# Nythxion Studios - LegalCenter
+# LegalCenter
 
 This repository contains the official **Nythxion Studios LegalCenter**, including our Terms of Service, policies, and other legal documents.
 
