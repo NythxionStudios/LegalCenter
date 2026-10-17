@@ -8,500 +8,19 @@
 <style>
   :root {
     --bg: #070912;
-    --bg-2: #0b1020;
-    --panel: rgba(17, 23, 42, 0.72);
-    --panel-solid: #11172a;
-    --panel-light: #171e34;
-    --text: #f4f7ff;
-    --muted: #98a2bb;
-    --line: rgba(255,255,255,.09);
-    --blue: #4da3ff;
-    --purple: #8b5cf6;
-    --cyan: #62d8ff;
-    --danger: #ff6b81;
-    --shadow: 0 20px 60px rgba(0,0,0,.35);
-  }
-
-  * { box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 15% 0%, rgba(77,163,255,.13), transparent 28rem),
-      radial-gradient(circle at 90% 12%, rgba(139,92,246,.14), transparent 30rem),
-      linear-gradient(180deg, #070912 0%, #090d18 45%, #070912 100%);
-    line-height: 1.75;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .35;
-    background-image:
-      linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: linear-gradient(to bottom, black, transparent 85%);
-  }
-
-  a { color: inherit; }
-
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid var(--line);
-    background: rgba(7,9,18,.76);
-    backdrop-filter: blur(18px);
-  }
-
-  .nav {
-    max-width: 1180px;
-    margin: auto;
-    padding: 16px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    font-weight: 800;
-    letter-spacing: -.02em;
-    text-decoration: none;
-  }
-
-  .brand-mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    font-size: 15px;
-    color: white;
-    background: linear-gradient(135deg, var(--blue), var(--purple));
-    box-shadow: 0 0 28px rgba(77,163,255,.28);
-  }
-
-  .brand span { color: var(--muted); font-weight: 600; }
-
-  .nav-links {
-    display: flex;
-    gap: 8px;
-  }
-
-  .nav-links a {
-    padding: 8px 12px;
-    border-radius: 9px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    transition: .2s ease;
-  }
-
-  .nav-links a:hover {
-    color: white;
-    background: rgba(255,255,255,.06);
-  }
-
-  .hero {
-    max-width: 1180px;
-    margin: auto;
-    padding: 90px 28px 55px;
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 11px;
-    border: 1px solid rgba(98,216,255,.2);
-    border-radius: 999px;
-    color: #b9eaff;
-    background: rgba(98,216,255,.06);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 12px var(--cyan);
-  }
-
-  .hero h1 {
-    max-width: 900px;
-    margin: 22px 0 14px;
-    font-size: clamp(48px, 7vw, 82px);
-    line-height: .98;
-    letter-spacing: -.055em;
-  }
-
-  .gradient-text {
-    background: linear-gradient(100deg, #fff 10%, #8fd8ff 48%, #aa8cff 90%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hero p {
-    max-width: 680px;
-    margin: 0;
-    color: var(--muted);
-    font-size: 18px;
-  }
-
-  .document-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 30px;
-  }
-
-  .meta {
-    padding: 9px 13px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: rgba(255,255,255,.035);
-    color: #cbd3e7;
-    font-size: 13px;
-  }
-
-  .layout {
-    max-width: 1180px;
-    margin: auto;
-    padding: 0 28px 100px;
-    display: grid;
-    grid-template-columns: 230px minmax(0, 1fr);
-    gap: 42px;
-    align-items: start;
-  }
-
-  .toc {
-    position: sticky;
-    top: 88px;
-    padding: 16px;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: rgba(12,17,31,.72);
-    backdrop-filter: blur(16px);
-    box-shadow: var(--shadow);
-    max-height: calc(100vh - 110px);
-    overflow-y: auto;
-  }
-
-  .toc-title {
-    margin: 16px 8px 8px;
-    color: #69748e;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-  }
-
-  .toc-title:first-child { margin-top: 2px; }
-
-  .toc-dept {
-    margin: 4px 8px 2px;
-    color: #8fd8ff;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    opacity: .85;
-  }
-
-  .toc a {
-    display: block;
-    padding: 7px 10px;
-    border-radius: 8px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    transition: .2s ease;
-  }
-
-  .toc a.toc-sub {
-    padding-left: 18px;
-    font-size: 12.5px;
-  }
-
-  .toc a:hover {
-    color: white;
-    background: rgba(77,163,255,.09);
-  }
-
-  .content {
-    min-width: 0;
-  }
-
-  .section {
-    position: relative;
-    margin-bottom: 52px;
-    padding: 30px 32px;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background: linear-gradient(145deg, rgba(17,23,42,.88), rgba(10,14,27,.82));
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-
-  .section::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 28px;
-    bottom: 28px;
-    width: 2px;
-    background: linear-gradient(var(--blue), var(--purple));
-    opacity: .8;
-  }
-
-  .section h2 {
-    margin: 0 0 18px;
-    font-size: 25px;
-    line-height: 1.25;
-    letter-spacing: -.025em;
-  }
-
-  .section h2 span {
-    margin-right: 9px;
-    color: var(--blue);
-    font-size: 12px;
-    letter-spacing: .08em;
-    vertical-align: middle;
-  }
-
-  .section p {
-    color: #c6cee0;
-    margin: 0 0 16px;
-  }
-
-  .section p:last-child { margin-bottom: 0; }
-
-  .section ul {
-    margin: 12px 0 0;
-    padding-left: 23px;
-    color: #c6cee0;
-  }
-
-  .section li {
-    margin: 8px 0;
-    padding-left: 3px;
-  }
-
-  .section li::marker { color: var(--blue); }
-
-  .notice {
-    margin-bottom: 52px;
-    padding: 22px 24px;
-    border: 1px solid rgba(77,163,255,.2);
-    border-radius: 17px;
-    background:
-      radial-gradient(circle at 0 0, rgba(77,163,255,.13), transparent 22rem),
-      rgba(77,163,255,.055);
-    color: #dbeeff;
-  }
-
-  .notice strong {
-    color: white;
-  }
-
-  .document-header {
-    margin: 70px 0 25px;
-    padding-top: 15px;
-    border-top: 1px solid var(--line);
-  }
-
-  .document-header:first-child { margin-top: 0; }
-
-  .document-header .label {
-    color: var(--purple);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .document-header h2 {
-    margin: 8px 0 5px;
-    font-size: 34px;
-    letter-spacing: -.04em;
-  }
-
-  .document-header p {
-    color: var(--muted);
-    margin: 0;
-    font-size: 14px;
-  }
-
-  .dept-header {
-    margin: 56px 0 25px;
-    padding-top: 15px;
-    border-top: 1px dashed var(--line);
-  }
-
-  .dept-header .label {
-    color: var(--cyan);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .dept-header h3 {
-    margin: 8px 0 5px;
-    font-size: 27px;
-    letter-spacing: -.03em;
-  }
-
-  .dept-header p {
-    color: var(--muted);
-    margin: 0;
-    font-size: 14px;
-    max-width: 640px;
-  }
-
-  .contact {
-    color: #9dd8ff;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .contact:hover { text-decoration: underline; }
-
-  .footer {
-    border-top: 1px solid var(--line);
-    background: rgba(5,7,14,.75);
-  }
-
-  .footer-inner {
-    max-width: 1180px;
-    margin: auto;
-    padding: 30px 28px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .back-top {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: rgba(17,23,42,.86);
-    color: white;
-    text-decoration: none;
-    backdrop-filter: blur(12px);
-    box-shadow: var(--shadow);
-  }
-
-  @media (max-width: 850px) {
-    .nav-links { display: none; }
-
-    .hero {
-      padding-top: 65px;
-    }
-
-    .layout {
-      grid-template-columns: 1fr;
-    }
-
-    .toc {
-      position: relative;
-      top: 0;
-      max-height: none;
-    }
-
-    .toc a {
-      display: inline-block;
-      margin: 2px;
-    }
-
-    .toc a.toc-sub {
-      padding-left: 10px;
-    }
-
-    .toc-title, .toc-dept {
-      margin-bottom: 7px;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .nav, .hero, .layout, .footer-inner {
-      padding-left: 18px;
-      padding-right: 18px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-    }
-
-    .section {
-      padding: 24px 21px;
-      border-radius: 16px;
-    }
-
-    .section::before {
-      top: 22px;
-      bottom: 22px;
-    }
-
-    .document-header h2 {
-      font-size: 29px;
-    }
-
-    .dept-header h3 {
-      font-size: 22px;
-    }
-
-    .footer-inner {
-      flex-direction: column;
-    }
-  }
-
-  :root {
-    --bg: #070912;
     --surface: #0c1020;
     --surface-hover: #10162a;
     --surface-soft: #0a0f1d;
     --border: #202943;
     --text: #f4f7ff;
     --muted: #aeb8d0;
-    --text-muted: #7f8aa5;
     --blue: #4da3ff;
-    --purple: #8b5cf6;
     --scrollbar-thumb: #242d47;
     --scrollbar-thumb-hover: #303b5d;
-    --line: var(--border);
-    --shadow: 0 16px 38px rgba(0,0,0,.18);
   }
 
   * {
+    box-sizing: border-box;
     scrollbar-color: var(--scrollbar-thumb) transparent;
     scrollbar-width: thin;
   }
@@ -517,30 +36,51 @@
   *::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
   *::-webkit-scrollbar-corner { background: transparent; }
 
-  html { scroll-padding-top: 90px; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
 
   body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
     background: var(--bg);
     line-height: 1.68;
   }
 
-  body::before { display: none; }
+  a { color: inherit; }
+
+  [id] { scroll-margin-top: 90px; }
 
   .topbar {
-    border-bottom-color: var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border);
     background: rgba(12,16,32,.96);
     backdrop-filter: blur(14px);
   }
 
   .nav {
+    max-width: 1180px;
+    margin: auto;
     min-height: 64px;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
   }
 
   .brand {
+    display: flex;
+    align-items: center;
     gap: 10px;
+    font-weight: 800;
     letter-spacing: 0;
+    text-decoration: none;
     white-space: nowrap;
   }
 
@@ -554,6 +94,8 @@
     object-fit: contain;
   }
 
+  .brand span { color: var(--muted); font-weight: 600; }
+
   .nav-links {
     display: flex;
     align-items: center;
@@ -562,6 +104,7 @@
     overflow-x: auto;
     scrollbar-width: none;
   }
+
   .nav-links::-webkit-scrollbar { display: none; }
 
   .nav-links a {
@@ -572,47 +115,54 @@
     padding: 0 12px;
     border: 1px solid transparent;
     border-radius: 7px;
-    color: #aeb8d0;
+    color: var(--muted);
     font-size: 13px;
     line-height: 1;
+    text-decoration: none;
     white-space: nowrap;
     transition: background .15s ease, border-color .15s ease, color .15s ease;
   }
 
   .nav-links a:hover,
-  .nav-links a.active,
-  .nav-links a[aria-current="page"],
   .nav-links a:focus-visible {
     border-color: var(--border);
     background: var(--surface-hover);
     color: var(--text);
   }
-  .nav-links a[aria-current="page"] { color: #a9d5ff; }
 
   .hero {
-    padding-top: 66px;
-    padding-bottom: 38px;
+    max-width: 1180px;
+    margin: auto;
+    padding: 66px 28px 38px;
   }
 
   .hero h1 {
     max-width: 760px;
+    margin: 22px 0 14px;
     font-size: 58px;
     line-height: 1.04;
     letter-spacing: 0;
   }
 
-  .gradient-text {
-    background: none;
-    color: var(--blue);
+  .gradient-text { color: var(--blue); }
+
+  .hero p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
   }
 
-  .hero p { font-size: 16px; }
-
-  .document-meta { margin-top: 22px; }
+  .document-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
 
   .meta {
     padding: 7px 10px;
-    border-color: var(--border);
+    border: 1px solid var(--border);
     border-radius: 7px;
     background: var(--surface);
     color: var(--muted);
@@ -620,95 +170,25 @@
   }
 
   .layout {
-    grid-template-columns: 230px minmax(0, 1fr);
+    max-width: 1180px;
+    margin: auto;
+    padding: 0 28px 76px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
-    padding-bottom: 76px;
+    align-items: start;
   }
 
-  .toc {
-    top: 80px;
-    padding: 12px;
-    border-color: var(--border);
-    border-radius: 9px;
-    background: var(--surface);
-    box-shadow: none;
-    backdrop-filter: none;
-  }
-
-  .toc-title {
-    margin: 11px 8px 6px;
-    color: var(--text-muted);
-    letter-spacing: .1em;
-  }
-
-  .toc-dept {
-    color: #79bcff;
-    letter-spacing: .06em;
-  }
-
-  .toc a {
-    padding: 7px 9px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    color: var(--muted);
-    font-size: 12px;
-    transition: background .15s ease, border-color .15s ease, color .15s ease;
-  }
-
-  .toc a.toc-sub { font-size: 11.5px; }
-
-  .toc a:hover,
-  .toc a:focus-visible {
-    border-color: var(--border);
-    background: var(--surface-hover);
-    color: var(--text);
-  }
-
-  .document-header {
-    margin: 52px 0 18px;
-    padding-top: 13px;
-    border-top-color: var(--border);
-  }
-
-  .document-header:first-child { margin-top: 0; }
-
-  .document-header .label,
-  .dept-header .label {
-    color: var(--blue);
-    letter-spacing: .1em;
-  }
-
-  .document-header h2 {
-    font-size: 30px;
-    letter-spacing: 0;
-  }
-
-  .dept-header {
-    margin: 38px 0 16px;
-    padding-top: 13px;
-    border-top: 1px solid var(--border);
-  }
-
-  .dept-header h3 { letter-spacing: 0; }
-
-  .notice {
-    margin-bottom: 24px;
-    padding: 16px 18px;
-    border-color: #263858;
-    border-radius: 8px;
-    background: #0c1424;
-    color: #cbd8ed;
-  }
-
-  .notice strong { color: var(--text); }
+  .content { min-width: 0; }
 
   .section {
+    position: relative;
     margin-bottom: 13px;
     padding: 21px 24px;
-    border-color: var(--border);
+    border: 1px solid var(--border);
     border-radius: 9px;
     background: var(--surface);
-    box-shadow: none;
+    overflow: hidden;
     transition: border-color .15s ease, background .15s ease;
   }
 
@@ -718,45 +198,121 @@
   }
 
   .section::before {
+    content: "";
+    position: absolute;
+    left: 0;
     top: 19px;
     bottom: 19px;
+    width: 2px;
     background: var(--blue);
     opacity: .72;
   }
 
   .section h2 {
-    margin-bottom: 12px;
+    margin: 0 0 12px;
     font-size: 19px;
     line-height: 1.4;
     letter-spacing: 0;
   }
 
   .section h2 span {
+    margin-right: 9px;
     color: var(--blue);
     font-size: 11px;
     letter-spacing: .04em;
+    vertical-align: middle;
   }
 
-  .section p,
-  .section ul { color: #c3cde1; }
+  .section p {
+    margin: 0 0 12px;
+    color: #c3cde1;
+  }
 
-  .section p { margin-bottom: 12px; }
+  .section p:last-child { margin-bottom: 0; }
 
   .section ul {
-    margin-top: 8px;
+    margin: 8px 0 0;
     padding-left: 20px;
+    color: #c3cde1;
   }
 
-  .section li { margin: 6px 0; }
+  .section li {
+    margin: 6px 0;
+    padding-left: 3px;
+  }
 
   .section li::marker { color: var(--blue); }
 
+  .notice {
+    margin-bottom: 24px;
+    padding: 16px 18px;
+    border: 1px solid #263858;
+    border-radius: 8px;
+    background: #0c1424;
+    color: #cbd8ed;
+  }
+
+  .notice strong { color: var(--text); }
+
+  .document-header {
+    margin: 52px 0 18px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  .document-header:first-child { margin-top: 0; }
+
+  .document-header .label,
+  .dept-header .label {
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .document-header h2 {
+    margin: 8px 0 5px;
+    font-size: 30px;
+    letter-spacing: 0;
+  }
+
+  .document-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .dept-header {
+    margin: 38px 0 16px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  .dept-header h3 {
+    margin: 8px 0 5px;
+    font-size: 27px;
+    letter-spacing: 0;
+  }
+
+  .dept-header p {
+    margin: 0;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
   .contact {
     color: #79bcff;
+    font-weight: 700;
+    text-decoration: none;
     transition: color .15s ease;
   }
 
-  .contact:hover { color: #a9d5ff; }
+  .contact:hover {
+    color: #a9d5ff;
+    text-decoration: underline;
+  }
 
   code {
     padding: 2px 5px;
@@ -767,19 +323,35 @@
   }
 
   .footer {
-    border-top-color: var(--border);
+    border-top: 1px solid var(--border);
     background: var(--surface);
   }
 
-  .footer-inner { padding-top: 22px; padding-bottom: 22px; }
+  .footer-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--muted);
+    font-size: 13px;
+  }
 
   .back-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
     width: 40px;
     height: 40px;
-    border-color: var(--border);
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
     border-radius: 8px;
     background: #11172a;
-    box-shadow: none;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(12px);
     transition: background .15s ease, border-color .15s ease;
   }
 
@@ -788,7 +360,18 @@
     background: var(--surface-hover);
   }
 
-  [id] { scroll-margin-top: 90px; }
+  .hero,
+  .layout > .content {
+    animation: page-enter .5s cubic-bezier(.22,1,.36,1) both;
+  }
+
+  .layout > .content { animation-delay: 120ms; }
+
+  @keyframes page-enter {
+    0% { opacity: 0; transform: translate3d(0, 12px, 0) rotate(-.18deg); }
+    72% { opacity: 1; transform: translate3d(0, -1px, 0) rotate(.08deg); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
+  }
 
   @media (max-width: 850px) {
     html { scroll-padding-top: 120px; }
@@ -801,31 +384,7 @@
       padding-bottom: 10px;
     }
 
-    .nav-links {
-      display: flex;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .nav-links::-webkit-scrollbar { display: none; }
-
-    .layout { grid-template-columns: 1fr; }
-
-    .toc {
-      position: relative;
-      top: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3px;
-      max-height: none;
-    }
-
-    .toc-title,
-    .toc-dept { flex-basis: 100%; }
-
-    .toc a { display: inline-flex; align-items: center; }
-    .toc a.toc-sub { padding-left: 9px; }
+    .nav-links { width: 100%; }
   }
 
   @media (max-width: 560px) {
@@ -842,29 +401,15 @@
 
     .section { padding: 19px 20px; }
     .section::before { top: 17px; bottom: 17px; }
+
     .document-header h2 { font-size: 26px; }
     .dept-header h3 { font-size: 21px; }
+
     .footer-inner { flex-direction: column; }
-  }
-
-  .hero,
-  .layout > .toc,
-  .layout > .content {
-    animation: page-enter .5s cubic-bezier(.22,1,.36,1) both;
-  }
-
-  .layout > .toc { animation-delay: 70ms; }
-  .layout > .content { animation-delay: 120ms; }
-
-  @keyframes page-enter {
-    0% { opacity: 0; transform: translate3d(0, 12px, 0) rotate(-.18deg); }
-    72% { opacity: 1; transform: translate3d(0, -1px, 0) rotate(.08deg); }
-    100% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .hero,
-    .layout > .toc,
     .layout > .content { animation: none; }
   }
 </style>
@@ -880,9 +425,9 @@
     </a>
 
     <div class="nav-links">
-      <a href="https://nythxionstudios.github.io/Homepage">Home</a>
-      <a href="https://nythxionstudios.github.io/Development">Development</a>
-      <a href="https://nythxionstudios.github.io/Portfolio">Portfolio</a>
+      <a href="homepage.html#top">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="development.html">Development</a>
     </div>
   </nav>
 </header>
@@ -890,105 +435,187 @@
 <section class="hero">
   <h1>Legal<br><span class="gradient-text">Center</span></h1>
   <p>
-Nythxion Studios is the umbrella brand for the Nythxion organization and its departments, divisions, projects, and associated services, including but not limited to Nythxion Designs, Nythxion Development, Nythxion AI, Nythxion Watermarker, Nythxion Sort, and Nythxion Open-Source.
-
-Unless otherwise stated, references to “Nythxion Studios” in these Terms of Service and this Copyright Notice are intended to include the departments, divisions, projects, and services listed above.
+    Everything you need to know about using Nythxion Studios' projects, Nythxion AI,
+    Nythxion Designs, Nythxion Open-Source, Nythxion Watermarker, and Nythxion Shortcuts,
+    and how information is handled.
   </p>
 
   <div class="document-meta">
-    <div class="meta">Last updated: October 16, 2026</div>
+    <div class="meta">Last updated: October 17, 2026</div>
   </div>
 </section>
 
 
 <main class="layout">
-  <aside class="toc">
-    <div class="toc-title">On this page</div>
-    <a href="#terms">Terms of Service</a>
-
-    <div class="toc-dept">General</div>
-    <a class="toc-sub" href="#tg1">Overview</a>
-    <a class="toc-sub" href="#tg2">Acceptance</a>
-    <a class="toc-sub" href="#tg3">Changes &amp; Updates</a>
-    <a class="toc-sub" href="#tg4">Termination</a>
-    <a class="toc-sub" href="#tg5">Liability</a>
-
-    <div class="toc-dept">Nythxion AI</div>
-    <a class="toc-sub" href="#tai1">Proper Use</a>
-    <a class="toc-sub" href="#tai2">AI Features</a>
-    <a class="toc-sub" href="#tai3">AI Moderation</a>
-    <a class="toc-sub" href="#tai4">Availability</a>
-
-    <div class="toc-dept">Nythxion Designs</div>
-    <a class="toc-sub" href="#tds1">Overview</a>
-    <a class="toc-sub" href="#tds2">Copyright &amp; Usage</a>
-    <a class="toc-sub" href="#tds3">Credit</a>
-
-    <div class="toc-dept">Nythxion Open-Source</div>
-    <a class="toc-sub" href="#tos1">Overview</a>
-    <a class="toc-sub" href="#tos2">Licensing</a>
-    <a class="toc-sub" href="#tos3">Copyright &amp; Branding</a>
-    <a class="toc-sub" href="#tos4">Credit</a>
-
-    <div class="toc-dept">Privacy Policy</div>
-    <a class="toc-sub" href="#p1">Data Controller</a>
-    <a class="toc-sub" href="#p2">Data We Process</a>
-    <a class="toc-sub" href="#p3">Why We Process Data</a>
-    <a class="toc-sub" href="#p4">Legal Bases</a>
-    <a class="toc-sub" href="#p5">AI Processing</a>
-    <a class="toc-sub" href="#p7">Groq</a>
-    <a class="toc-sub" href="#p13">Data Deletion</a>
-    <a class="toc-sub" href="#p14">GDPR Rights</a>
-    <a class="toc-sub" href="#p19">Contact</a>
-  </aside>
-
   <article class="content">
 
     <div id="terms" class="document-header">
       <div class="label">Nythxion Studios</div>
       <h2>Terms of Service</h2>
-      <p>Last updated: October 16, 2026</p>
+      <p>Last updated: October 17, 2026</p>
     </div>
 
     <div class="notice">
       <strong>TL;DR:</strong> These Terms apply to everything operated under Nythxion
-      Studios. The General section below applies studio-wide. Each project
-      <strong>Nythxion AI</strong>, <strong>Nythxion Designs</strong>, and
-      <strong>Nythxion Open-Source</strong> - also has its own terms further down this
-      page that apply in addition to the General section.
+      Studios. The General section below applies studio-wide. Each project, including
+      <strong>Nythxion AI</strong>, <strong>Nythxion Designs</strong>,
+      <strong>Nythxion Open-Source</strong>, <strong>Nythxion Watermarker</strong>, and
+      <strong>Nythxion Shortcuts</strong>, also has its own terms further down this
+      page that apply in addition to the General section. Project-specific terms and
+      licenses take precedence where they specifically cover a feature or grant rights.
     </div>
 
     <div class="dept-header">
       <div class="label">Studio-wide</div>
       <h3>General</h3>
-      <p>Applies to all Nythxion Studios projects, including Nythxion AI, Nythxion Designs, and Nythxion Open-Source.</p>
+      <p>Applies to all Nythxion Studios projects, including Nythxion AI, Nythxion Designs, Nythxion Development and Nythxion Open-Source.</p>
     </div>
 
     <section class="section" id="tg1">
       <h2><span>01</span> Overview</h2>
       <p>
-        Nythxion Studios operates multiple projects, currently organized under two
-        departments: <strong>Nythxion Development</strong>, which includes Nythxion AI
-        and Nythxion Open-Source, and <strong>Nythxion Designs</strong>, our creative
-        project. This section sets out the terms that apply across all Nythxion Studios
-        projects. Terms specific to an individual project are set out separately below
-        and apply in addition to this section.
+        Nythxion Studios operates multiple projects, which may include software, Discord
+        bots, websites, tools, creative work, and other digital services. Projects are
+        currently organized under two departments: <strong>Nythxion Development</strong>,
+        which includes Nythxion AI and Nythxion Open-Source, and <strong>Nythxion
+        Designs</strong>, our creative project. This section sets out the terms that
+        apply across all Nythxion Studios projects. Terms specific to an individual
+        project are set out separately below and apply in addition to this section.
+      </p>
+      <p>
+        Where a project-specific term or license specifically covers a feature or grants
+        rights, that project-specific term or license takes precedence.
       </p>
     </section>
 
+    <section class="section" id="tg6">
+      <h2><span>02</span> Definitions</h2>
+      <p>In these Terms:</p>
+      <ul>
+        <li>“we”, “us”, and “our” mean Nythxion Studios.</li>
+        <li>“you” and “your” mean the person or entity using a Service.</li>
+        <li>
+          “Services” means the applicable Nythxion Studios projects or features, including
+          Nythxion AI, Nythxion Designs, Nythxion Open-Source, and any other project or
+          feature operated by us.
+        </li>
+        <li>
+          “Software” means any app, bot, tool, or other program that we provide or make
+          available, whether downloaded, installed, or accessed through a platform such as
+          Discord.
+        </li>
+      </ul>
+    </section>
+
     <section class="section" id="tg2">
-      <h2><span>02</span> Acceptance</h2>
+      <h2><span>03</span> Acceptance</h2>
       <p>
-        By adding, accessing, or using any Nythxion Studios project - including Nythxion
-        AI, requesting work from Nythxion Designs, or using code released through
-        Nythxion Open-Source - you agree to these Terms, including the terms specific to
+        By adding, accessing, or using any Nythxion Studios project - including but not limited to
+        Nythxion AI, requesting work from Nythxion Designs, using code released through
+        Nythxion Open-Source or using any other of our Software and Services - you agree to these Terms, including the terms specific to
         that project. If you do not agree with these Terms, you should stop using the
         relevant project.
       </p>
     </section>
 
+    <section class="section" id="tg13">
+      <h2><span>04</span> Use of Services</h2>
+      <p>When you use any Service, you agree to:</p>
+      <ul>
+        <li>Use it only for lawful purposes and in line with its intended function and any applicable project documentation</li>
+        <li>Provide accurate information where a Service requires it, and keep that information up to date</li>
+        <li>Keep any login credentials, tokens, or access keys confidential, and be responsible for activity carried out through your account or access</li>
+        <li>Comply with the rules of any Discord server, community, or other platform where you use a Service</li>
+        <li>Meet any minimum age or other eligibility requirements that apply to you, including those set by third-party platforms</li>
+      </ul>
+      <p>
+        If you act on behalf of a server, community, or organization, you confirm that you
+        are authorized to do so and that its members are informed of how the Service is used.
+      </p>
+      <p>
+        We may limit, suspend, or modify access to a Service where we reasonably believe it
+        is being used in breach of these Terms, or where necessary to protect the Service,
+        other users, or third parties.
+      </p>
+    </section>
+
+    <section class="section" id="tg14">
+      <h2><span>05</span> Use of App Software</h2>
+      <p>
+        Software is licensed to you, not sold. Subject to these Terms and any applicable
+        project license, we grant you a limited, non-exclusive, non-transferable, and
+        revocable right to install and use the Software for its intended purpose.
+      </p>
+      <p>Unless an applicable license expressly allows it, you may not:</p>
+      <ul>
+        <li>Copy, modify, or create derivative works of the Software</li>
+        <li>Reverse engineer, decompile, or disassemble the Software, except to the extent applicable law expressly permits this despite this restriction</li>
+        <li>Remove, alter, or obscure any copyright, license, or proprietary notice</li>
+        <li>Circumvent licensing, access, or technical protection measures</li>
+        <li>Rent, lease, sell, sublicense, or otherwise distribute the Software</li>
+        <li>Use the Software to build a competing service by copying its features or code without permission</li>
+      </ul>
+      <p>
+        Software may be updated, changed, or removed from time to time. Where updates are
+        provided automatically, you agree to receive them. Open-source components included
+        in the Software are governed by their own licenses, which take precedence for those
+        components.
+      </p>
+    </section>
+
+    <section class="section" id="tg7">
+      <h2><span>06</span> Acceptable Use</h2>
+      <p>You agree not to use any Service to:</p>
+      <ul>
+        <li>Engage in unlawful activity or violate applicable laws or regulations</li>
+        <li>Infringe the rights of others, including intellectual property, privacy, or other personal rights</li>
+        <li>Harass, threaten, or abuse others, or promote hate speech</li>
+        <li>Send spam, unsolicited bulk messages, or intentionally disrupt Discord servers or other communities</li>
+        <li>Interfere with, overload, or disrupt the operation or security of any Service</li>
+        <li>Access systems, accounts, data, or features without authorization</li>
+        <li>Exploit security vulnerabilities, bugs, or weaknesses in any Service</li>
+        <li>Abuse features, including AI, moderation, leveling, economy, or other functionality, in ways not intended by the project</li>
+        <li>Use harmful or unauthorized automation, such as scripts or bots that interact with a Service without permission</li>
+        <li>Falsely claim that a Service, its materials, or its operators endorse you or your project</li>
+      </ul>
+      <p>
+        These rules do not restrict lawful activity that you are entitled to perform,
+        including activity permitted by applicable law or by a project’s open-source
+        license, such as using, studying, modifying, or redistributing licensed code in
+        accordance with its terms.
+      </p>
+    </section>
+
+    <section class="section" id="tg9">
+      <h2><span>07</span> Third-Party Terms</h2>
+      <p>
+        Services may rely on, link to, or interact with third-party platforms, providers,
+        and tools, such as Discord, Figma, or AI model providers. The terms and policies of
+        those third parties may also apply to your use of the relevant feature. Discord-specific
+        provisions are set out under Nythxion AI below, and Figma-specific provisions are set
+        out under Nythxion Watermarker below.
+      </p>
+      <p>
+        Nythxion Studios is independent and is not affiliated with, sponsored by, or endorsed
+        by Discord or Figma, unless we state otherwise.
+      </p>
+    </section>
+
+    <section class="section" id="tg10">
+      <h2><span>08</span> Availability and Discontinuation</h2>
+      <p>
+        Features may change, be suspended, or be discontinued. Where reasonably possible,
+        we will provide notice of significant changes, but we do not promise advance
+        notice or permanent availability of any feature or Service.
+      </p>
+      <p>
+        Nothing in this section limits rights you have under applicable law that cannot
+        be excluded.
+      </p>
+    </section>
+
     <section class="section" id="tg3">
-      <h2><span>03</span> Changes and Updates</h2>
+      <h2><span>09</span> Changes and Updates</h2>
       <p>
         Features, functionality, and other parts of any Nythxion Studios project may be
         changed, improved, removed, or replaced over time. These Terms may also be
@@ -997,8 +624,36 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
+    <section class="section" id="tg11">
+      <h2><span>10</span> Intellectual Property</h2>
+      <p>
+        Nythxion names, logos, branding, original graphics, website designs,
+        documentation, and other original materials are protected by intellectual
+        property law where applicable. Except as permitted by these Terms or by an
+        applicable license, you may not copy, reuse, or present these materials as your
+        own, or use them in a way that implies endorsement by Nythxion Studios.
+      </p>
+      <p>
+        Open-source licenses apply only to the code and materials they expressly cover.
+        A software license, such as the MIT License, does not automatically grant rights
+        to Nythxion names, logos, or other excluded branding. Nothing in this section
+        overrides rights granted by an applicable license or by law.
+      </p>
+    </section>
+
+    <section class="section" id="tg12">
+      <h2><span>11</span> Project-Specific Rules</h2>
+      <p>
+        Each project may have its own usage instructions, license, or additional rules.
+        Before using, modifying, or redistributing project materials, check the applicable
+        project documentation, license, or terms, such as a project’s <code>LICENSE</code>
+        and <code>README.md</code>. Project-specific terms apply in addition to this
+        section.
+      </p>
+    </section>
+
     <section class="section" id="tg4">
-      <h2><span>04</span> Termination</h2>
+      <h2><span>12</span> Termination</h2>
       <p>
         We may restrict or terminate access to a Nythxion Studios project where
         necessary to prevent abuse, protect the project, enforce these Terms, or comply
@@ -1008,11 +663,28 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
     </section>
 
     <section class="section" id="tg5">
-      <h2><span>05</span> Liability</h2>
+      <h2><span>13</span> Liability</h2>
       <p>
-        To the extent permitted by applicable law, Nythxion Studios and its operators
-        are not responsible for losses, damages, service interruptions, or consequences
-        resulting from the use of, or inability to use, any Nythxion Studios project.
+        We are liable without limitation for damage caused intentionally or through gross
+        negligence, and for damage resulting from injury to life, body, or health. Our liability
+        under the German Product Liability Act (Produkthaftungsgesetz) is not limited by these Terms.
+      </p>
+      <p>
+        For damage caused by slight negligence, we are liable only for breach of essential
+        contractual obligations, meaning obligations whose fulfilment makes proper performance of
+        the relevant Service possible and on whose performance you regularly rely. In that case,
+        our liability is limited to damage that is typical for the relevant Service and foreseeable
+        at the time the Service is used.
+      </p>
+      <p>
+        For Services and Software provided free of charge, our liability is limited to intent and
+        gross negligence, to the extent permitted by law.
+      </p>
+      <p>
+        Except as set out above, we are not responsible for losses, service interruptions, or
+        consequences resulting from the use of, or inability to use, any Nythxion Studios project.
+        Nothing in these Terms excludes or limits liability where this is not permitted by
+        applicable law, including mandatory German and EU consumer protection law.
       </p>
     </section>
 
@@ -1024,7 +696,7 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
 
     <section class="section" id="tai1">
       <h2><span>01</span> Proper Use</h2>
-      <p>You agree not to use Nythxion AI for:</p>
+      <p>In addition to the Acceptable Use rules in the General section, you agree not to use Nythxion AI for:</p>
       <ul>
         <li>Illegal activities</li>
         <li>Harassment, hate speech, or targeted abuse</li>
@@ -1040,9 +712,16 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       <p>
         Nythxion AI provides AI chat features, AI-assisted moderation, utility features,
         leveling, economy systems, user memory, and other server functionality.
-        AI-generated responses may contain errors, inaccurate information, inappropriate
-        content, or other unexpected results. AI-generated content should not be treated
-        as professional, legal, medical, financial, or other authoritative advice.
+      </p>
+      <p>
+        AI-generated responses may contain errors, inaccurate or incomplete information,
+        inappropriate content, or other unexpected results. AI output should be checked
+        before you rely on it or share it, and should not be treated as professional,
+        legal, medical, financial, or other authoritative advice.
+      </p>
+      <p>
+        AI features may be subject to usage limits, rate limits, and safety controls,
+        which may change over time.
       </p>
     </section>
 
@@ -1064,7 +743,27 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       <p>
         Nythxion AI is provided on an "as is" and "as available" basis. We aim to
         maintain reliable service but do not guarantee uninterrupted availability,
-        uptime, or error-free operation.
+        uptime, or error-free operation. Features may also be changed or discontinued as
+        described in the General section.
+      </p>
+    </section>
+
+    <section class="section" id="tai5">
+      <h2><span>05</span> Discord</h2>
+      <p>
+        Nythxion AI operates on Discord. Your use of Discord is governed by Discord’s
+        <a class="contact" href="https://discord.com/terms">Terms of Service</a>
+        (<a class="contact" href="https://discord.com/terms">https://discord.com/terms</a>)
+        and <a class="contact" href="https://discord.com/guidelines">Community Guidelines</a>
+        (<a class="contact" href="https://discord.com/guidelines">https://discord.com/guidelines</a>).
+      </p>
+      <p>
+        Discord may independently enforce its own policies, including against users or
+        servers, regardless of any action taken by Nythxion AI.
+      </p>
+      <p>
+        Nythxion Studios is independent and is not affiliated with, sponsored by, or
+        endorsed by Discord.
       </p>
     </section>
 
@@ -1180,69 +879,267 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
+    <div class="dept-header">
+      <div class="label">Desktop Software</div>
+      <h3>Nythxion Watermarker</h3>
+      <p>Applies specifically to the Nythxion Watermarker Desktop Application Software and its Figma plug-in, in addition to the General section above.</p>
+    </div>
+
+    <section class="section" id="wm1">
+      <h2><span>01</span> Overview</h2>
+      <p>
+        Nythxion Watermarker consists of a desktop application and a Figma plug-in that allows you also to
+        apply watermarks to designs in Figma without having to export the artwork, opening the desktop app and watermark it there. The desktop application and
+        the plug-in work together through a local connection on your device, as described below and in
+        the Privacy Policy.
+      </p>
+    </section>
+
+    <section class="section" id="wm2">
+      <h2><span>02</span> Figma</h2>
+      <p>
+        Using Nythxion Watermarker requires a Figma account and use of Figma. Your use of Figma is governed by
+        Figma’s terms of service and privacy policy, which apply in addition to these Terms.
+      </p>
+      <p>
+        Nythxion Studios is independent and is not affiliated with, sponsored by, or endorsed by Figma.
+        If the plug-in is published through Figma’s Community, Figma’s plugin rules and guidelines also apply to it.
+      </p>
+      <p>
+        We do not control Figma’s platform or API. Changes that Figma makes to its platform, API, or plugin
+        rules may affect or stop the functionality of Nythxion Watermarker.
+      </p>
+    </section>
+
+    <section class="section" id="wm3">
+      <h2><span>03</span> Your Files and Content</h2>
+      <p>
+        Your Figma files, designs, and other content remain yours. We do not claim ownership of your content
+        and do not acquire any rights in it. Processing of your content is limited to what is necessary to
+        provide the functionality you use.
+      </p>
+      <p>
+        You are responsible for the content you process with Nythxion Watermarker and for having the rights
+        needed to add watermarks to it.
+      </p>
+    </section>
+
+    <section class="section" id="wm4">
+      <h2><span>04</span> Watermarks and Output</h2>
+      <p>
+        A watermark is a visible marking. It does not guarantee that your work is protected. Watermarks can
+        be cropped, edited, obscured, or removed by others, and we do not warrant that watermarked output
+        will prevent copying, misuse, or infringement.
+      </p>
+      <p>
+        You are responsible for checking watermarked output before you use, share, or publish it.
+      </p>
+    </section>
+
+    <section class="section" id="wm5">
+      <h2><span>05</span> Local Connection and Saved Settings</h2>
+      <p>
+        The Figma plug-in checks whether the Nythxion Watermarker desktop application is installed on your PC.
+        If it is, the plug-in reads the Watermarker save data, including the main
+        save slot. The save slot stores the settings you choose for watermarking, such as the content you want to
+        watermark, the watermark colour, and rotation.
+      </p>
+      <p>
+        The plug-in and the desktop application exchange this information through <code>http://localhost:51820</code>,
+        and the desktop application communicates with the plug-in in the same way. This communication takes place on
+        your device and is not sent to Nythxion Studios servers. The desktop application must be installed
+        for the plug-in to work if the desktop application is not running, then no information is fetched.
+      </p>
+      <p>
+        You must not modify this connection, expose it to other devices or networks, or use it with software
+        other than the official plug-in and desktop application. Nythxion Studios is not responsible for the
+        security of a local connection that you have changed or exposed.
+      </p>
+    </section>
+
+    <section class="section" id="wm6">
+      <h2><span>06</span> Permitted and Prohibited Use</h2>
+      <p>In addition to the Acceptable Use rules in the General section, you agree not to use Nythxion Watermarker to:</p>
+      <ul>
+        <li>Remove, alter, hide, or bypass watermarks, copyright notices, or ownership markings applied by others</li>
+        <li>Apply watermarks to content that you do not have the right to modify</li>
+        <li>Remove, replace, or conceal the attribution of the creator of a design</li>
+        <li>Circumvent the security, access controls, or terms of Figma or any other service</li>
+      </ul>
+    </section>
+
+    <section class="section" id="wm7">
+      <h2><span>07</span> Updates</h2>
+      <p>
+        Nythxion Watermarker does not check for updates automatically. You can download new versions from our
+        website. Changes to the plug-in may require a compatible version of the desktop application, and the
+        plug-in may stop working until you install that version.
+      </p>
+    </section>
+
+    <section class="section" id="wm8">
+      <h2><span>08</span> License and Availability</h2>
+      <p>
+        Use of the Nythxion Watermarker desktop application is also subject to the Use of App Software section above.
+        Nythxion Watermarker is provided on an “as is” and “as available” basis, as described in the General section.
+        We do not guarantee that it will work with every version of Figma, every operating system, or every future update.
+      </p>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Desktop Software</div>
+      <h3>Nythxion Shortcuts</h3>
+      <p>Applies specifically to the Nythxion Shortcuts Desktop App, in addition to the General section above.</p>
+    </div>
+
+    <section class="section" id="sc1">
+      <h2><span>01</span> Overview</h2>
+      <p>
+        Nythxion Shortcuts is a desktop application that [describe what it does, for example: lets users create
+        and run keyboard shortcuts or automated actions on their computer]. It is Software for the purposes of the
+        General section.
+      </p>
+    </section>
+
+    <section class="section" id="sc2">
+      <h2><span>02</span> Your Shortcuts</h2>
+      <p>
+        You are responsible for the shortcuts, scripts, actions, and workflows you create, import, or run. Before
+        running a shortcut, check what it does, especially actions that delete or change files, send messages,
+        make purchases, or access accounts or other applications.
+      </p>
+      <p>
+        Nythxion Studios is not responsible for the consequences of shortcuts you create or run, including
+        shortcuts created by others and shared with you.
+      </p>
+    </section>
+
+    <section class="section" id="sc3">
+      <h2><span>03</span> System Access and Permissions</h2>
+      <p>
+        Nythxion Shortcuts may need access to parts of your device to function, such as files, applications,
+        keyboard or input events, or operating system features [confirm which permissions are requested]. Grant
+        only the permissions you are comfortable with.
+      </p>
+      <p>
+        You can revoke permissions in your operating system settings. Some features may stop working if you do.
+      </p>
+    </section>
+
+    <section class="section" id="sc4">
+      <h2><span>04</span> Shared and Imported Shortcuts</h2>
+      <p>
+        Shortcuts created, shared, or imported by other users or third parties are not reviewed or endorsed by
+        Nythxion Studios unless we state otherwise [remove this paragraph if there is no sharing or marketplace feature].
+        Use them at your own risk and check them before running them.
+      </p>
+    </section>
+
+    <section class="section" id="sc5">
+      <h2><span>05</span> Permitted and Prohibited Use</h2>
+      <p>In addition to the Acceptable Use rules in the General section, you agree not to use Nythxion Shortcuts to:</p>
+      <ul>
+        <li>Create, distribute, or run malware, or shortcuts designed to damage, disrupt, or gain unauthorized access to any system</li>
+        <li>Bypass authentication, security controls, or access limits of any system or service</li>
+        <li>Capture or collect credentials or personal data of others without their authorization</li>
+        <li>Automate actions on third-party services in breach of those services’ terms, such as creating accounts, sending spam, or scraping data without permission</li>
+        <li>Automate actions in ways that harm, harass, or deceive other people</li>
+      </ul>
+    </section>
+
+    <section class="section" id="sc6">
+      <h2><span>06</span> Third-Party Applications and Services</h2>
+      <p>
+        Shortcuts may interact with third-party applications and services. Their terms and policies apply to your
+        use of them. We are not responsible for changes to, or the availability of, those applications and services.
+      </p>
+    </section>
+
+    <section class="section" id="sc7">
+      <h2><span>07</span> Local Data, Updates, and Backups</h2>
+      <p>
+        Nythxion Shortcuts stores your shortcuts and settings locally on your device, as described in the Privacy
+        Policy. You are responsible for backing up any shortcuts you want to keep.
+      </p>
+      <p>
+        [Confirm how updates are delivered. If they are downloaded manually from our website, state that here,
+        matching the Watermarker section.]
+      </p>
+    </section>
+
+    <section class="section" id="sc8">
+      <h2><span>08</span> Disclaimer of Operation</h2>
+      <p>
+        Shortcuts may fail, behave unexpectedly, or cause loss of data if misconfigured. Back up important files
+        before running automation. Nythxion Shortcuts is provided on an “as is” and “as available” basis, as
+        described in the General section, and mandatory rights under applicable law are not affected.
+      </p>
+    </section>
+
 
     <div id="privacy" class="document-header">
-      <div class="label">Nythxion AI</div>
+      <div class="label">Studio-wide</div>
       <h2>Privacy Policy</h2>
-      <p>Last updated: October 16, 2026</p>
+      <p>Last updated: October 17, 2026</p>
     </div>
 
     <div class="notice">
-      <strong>TL;DR:</strong> This Privacy Policy describes how <strong>Nythxion AI</strong>
-      specifically processes data as a Discord bot. Nythxion Designs and Nythxion
-      Open-Source do not operate through Discord and are not covered by this policy. We
-      do not sell personal data or use it for advertising. Some message content may be
-      processed by Groq when required for AI features or AI-assisted moderation.
+      <strong>TL;DR:</strong> This Privacy Policy describes how Nythxion Studios handles
+      personal data across all of its projects and Services, including <strong>Nythxion AI</strong>,
+      <strong>Nythxion Designs</strong>, <strong>Nythxion Open-Source</strong>, our websites, and our
+      desktop Software, including <strong>Nythxion Watermarker</strong> and <strong>Nythxion Shortcuts</strong>.
+      Desktop Software may store data locally on your device. Nythxion AI processes
+      some data through Discord and sends certain message content to Groq, as described below. We do
+      not sell personal data or use it for advertising.
+    </div>
+
+    <div class="dept-header">
+      <div class="label">Studio-wide</div>
+      <h3>Overview</h3>
+      <p>Applies to all Nythxion Studios projects and Services.</p>
     </div>
 
     <section class="section" id="p1">
-      <h2><span>01</span> Data Controller</h2>
+      <h2><span>01</span> Scope and Controller</h2>
       <p>
-        For the purposes of applicable data protection law, the operator of Nythxion AI
-        acts as the controller for personal data processed directly by Nythxion AI.
+        This Privacy Policy applies to personal data processed by Nythxion Studios through its
+        projects and Services, including software, websites, and communication with us.
       </p>
       <p>
-        <strong>Project:</strong> Nythxion AI<br>
+        For the purposes of applicable data protection law, Nythxion Studios acts as the controller
+        for personal data processed directly by us. The operator is [Operator name and address - to be completed].
+      </p>
+      <p>
         <strong>Contact:</strong>
         <a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a>
       </p>
-      <p>Nythxion AI is operated under Nythxion Development, part of Nythxion Studios.</p>
+      <p>
+        Some projects, such as Nythxion Open-Source, may process little or no personal data
+        themselves. Where a project is used through a third-party platform such as Discord, that
+        platform's processing is governed by its own policies.
+      </p>
     </section>
 
     <section class="section" id="p2">
-      <h2><span>02</span> Data We Process</h2>
-      <p>
-        Depending on which features are used and how a server is configured, Nythxion AI
-        may process the following information:
-      </p>
+      <h2><span>02</span> Projects Covered</h2>
+      <p>This Privacy Policy covers the following:</p>
       <ul>
-        <li>Discord User IDs</li>
-        <li>Discord Server IDs</li>
-        <li>Discord channel IDs where required for configuration</li>
-        <li>Usernames or Discord tags where required for moderation records</li>
-        <li>Messages processed by moderation features</li>
-        <li>Messages or prompts submitted through AI commands</li>
-        <li>User-saved memory created through memory features</li>
-        <li>Leveling and economy information</li>
-        <li>Moderation information such as warnings, timeouts, kicks, and bans</li>
-        <li>Server configuration and feature settings</li>
+        <li><strong>Nythxion AI:</strong> a Discord bot. See the Nythxion AI section below.</li>
+        <li><strong>Nythxion Designs:</strong> processes the information you provide when you request work or contact us.</li>
+        <li><strong>Nythxion Open-Source:</strong> publishes source code. Personal data is processed when you interact with us through repositories, issue trackers, or other channels, which are also governed by their own terms.</li>
+        <li><strong>Desktop Software:</strong> may store data locally on your device. See the Desktop Software section below.</li>
+        <li><strong>Websites:</strong> hosted by third-party hosting providers, which process limited technical data when you visit.</li>
       </ul>
     </section>
 
     <section class="section" id="p3">
-      <h2><span>03</span> Why We Process Data</h2>
-      <p>Data may be processed for the following purposes:</p>
+      <h2><span>03</span> Data We Process</h2>
+      <p>Depending on which projects and features you use, we may process the following:</p>
       <ul>
-        <li>Providing requested bot functionality</li>
-        <li>Processing AI requests</li>
-        <li>Performing AI-assisted moderation</li>
-        <li>Applying server moderation actions</li>
-        <li>Maintaining moderation records</li>
-        <li>Providing leveling and economy functionality</li>
-        <li>Providing user memory functionality</li>
-        <li>Maintaining server-specific configuration</li>
-        <li>Protecting the bot against abuse, spam, and misuse</li>
-        <li>Maintaining and improving the reliability and security of the service</li>
+        <li>Contact details and message content when you contact us, such as name, username, email-address and the content of your message</li>
+        <li>Request information you provide when asking for work, such as project details, requirements, and files</li>
+        <li>Data stored locally by desktop Software, as described below</li>
+        <li>Data processed by Nythxion AI, as described below</li>
       </ul>
     </section>
 
@@ -1256,7 +1153,10 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       <ul>
         <li>
           <strong>Art. 6(1)(b) GDPR:</strong> processing necessary to provide requested
-          functionality or perform an agreement where applicable.
+          functionality, respond to your request, or perform an agreement where applicable.
+        </li>
+        <li>
+          <strong>Art. 6(1)(c) GDPR:</strong> processing necessary to comply with a legal obligation.
         </li>
         <li>
           <strong>Art. 6(1)(f) GDPR:</strong> legitimate interests such as protecting
@@ -1276,7 +1176,137 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
     </section>
 
     <section class="section" id="p5">
-      <h2><span>05</span> AI Processing</h2>
+      <h2><span>05</span> Why We Process Data</h2>
+      <p>Data may be processed for the following purposes:</p>
+      <ul>
+        <li>Providing and supporting our projects and Services</li>
+        <li>Responding to contact requests and carrying out requests for work</li>
+        <li>Providing requested bot functionality</li>
+        <li>Processing AI requests and performing AI-assisted moderation</li>
+        <li>Applying server moderation actions and maintaining moderation records</li>
+        <li>Providing leveling, economy, and user memory functionality</li>
+        <li>Maintaining server-specific configuration</li>
+        <li>Delivering software updates and verifying licenses where applicable</li>
+        <li>Protecting our projects against abuse, spam, and misuse</li>
+        <li>Maintaining and improving the reliability and security of our Services</li>
+        <li>Complying with legal obligations</li>
+      </ul>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Desktop Software</div>
+      <h3>Local Data</h3>
+      <p>Applies to desktop Software that stores data on your device.</p>
+    </div>
+
+    <section class="section" id="p6">
+      <h2><span>06</span> Data Stored on Your Device</h2>
+      <p>
+        Desktop Software may store data locally on the device on which it is installed.
+        Depending on the application, this may include settings and preferences, locally
+        saved files or projects, cache data, and log files. This data is stored in the
+        user or application data locations that your operating system uses for that software.
+      </p>
+      <p>
+        Local data stays on your device and is not uploaded to us unless a feature requires
+        it. Where offered, such features include account sign-in, license checks, update
+        checks, and any sync or sharing feature you choose to use. Where those features send
+        data to us, the relevant section of this policy applies.
+      </p>
+    </section>
+
+    <section class="section" id="p7">
+      <h2><span>07</span> Updates and Network Requests</h2>
+      <p>
+        Only our Nythxion Watermarker Desktop Application Software connects to the Figma API
+        (<a class="contact" href="https://figma.com">https://figma.com</a>). Figma's terms of
+        service and privacy policy may also apply to your use of Figma. Our Figma Watermarker
+        plug-in communicates locally with the Nythxion Watermarker Desktop Application Software
+        through <code>http://localhost:51820</code>, and the Desktop Application Software
+        communicates with the plug-in in the same way. This local connection stays on your device.
+        The plug-in checks whether the desktop application is installed and reads the Watermarker
+        save data in your AppData folder, including the main save slot, which holds your saved
+        watermark settings.
+      </p>
+      <p>
+        The Nythxion Watermarker Desktop Application Software does NOT contact our servers to
+        check for and download updates. Instead, you may have to manually download updates from our website. The Software does not send any data to us for update checks.
+      </p>
+    </section>
+
+    <section class="section" id="p8">
+      <h2><span>08</span> Your Control Over Local Data</h2>
+      <p>
+        You can remove locally stored data by uninstalling the Software and deleting its local
+        data folders. Where an application offers settings to clear data or reset preferences,
+        you can use those settings instead.
+      </p>
+      <p>
+        Because local data is stored on your device, we cannot access or delete it for you
+        unless you send it to us. Uninstalling may delete data, so keep backups of important
+        files. You are also responsible for protecting your device and any data stored on it.
+      </p>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Websites and Communication</div>
+      <h3>Websites and Contact</h3>
+      <p>Applies to our websites and to communication with us.</p>
+    </div>
+
+    <section class="section" id="p9">
+      <h2><span>09</span> Websites and Server Logs</h2>
+      <p>
+        Our websites are hosted by third-party hosting providers. When you visit a website,
+        the hosting provider may process technical data such as your IP address, the date and
+        time of access, requested files, and browser information in server logs. These logs
+        are used to operate and secure the websites and are kept only as long as reasonably
+        necessary.
+      </p>
+      <p>
+        If we use cookies or similar technologies that are not strictly necessary, we will
+        request your consent where required by law and update this policy.
+      </p>
+    </section>
+
+    <section class="section" id="p10">
+      <h2><span>10</span> Contact Messages and Requests</h2>
+      <p>
+        When you contact us by email, Discord, or another channel, or request work from
+        Nythxion Designs, we process the information you provide to respond and to handle your
+        request. We keep this information only as long as needed for that purpose or as required
+        by law.
+      </p>
+    </section>
+
+    <div class="dept-header">
+      <div class="label">Nythxion AI</div>
+      <h3>Discord Bot</h3>
+      <p>Applies specifically to the Nythxion AI Discord bot.</p>
+    </div>
+
+    <section class="section" id="p11">
+      <h2><span>11</span> Data Processed by Nythxion AI</h2>
+      <p>
+        Depending on which features are used and how a server is configured, Nythxion AI
+        may process the following information:
+      </p>
+      <ul>
+        <li>Discord User IDs</li>
+        <li>Discord Server IDs</li>
+        <li>Discord channel IDs where required for configuration</li>
+        <li>Usernames or Discord tags where required for moderation records</li>
+        <li>Messages processed by moderation features</li>
+        <li>Messages or prompts submitted through AI commands</li>
+        <li>User-saved memory created through memory features</li>
+        <li>Leveling and economy information</li>
+        <li>Moderation information such as warnings, timeouts, kicks, and bans</li>
+        <li>Server configuration and feature settings</li>
+      </ul>
+    </section>
+
+    <section class="section" id="p12">
+      <h2><span>12</span> AI Processing</h2>
       <p>
         When an AI command is used, the relevant prompt or content may be transmitted to
         an external AI provider, currently Groq, to generate the requested response.
@@ -1294,8 +1324,8 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p6">
-      <h2><span>06</span> AI Moderation Data</h2>
+    <section class="section" id="p13">
+      <h2><span>13</span> AI Moderation Data</h2>
       <p>
         When a message triggers AI-assisted moderation, the relevant message content may
         be transmitted to Groq together with the information necessary for the AI model
@@ -1311,8 +1341,36 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p7">
-      <h2><span>07</span> Groq as an External Provider</h2>
+    <section class="section" id="p14">
+      <h2><span>14</span> Moderation Logs</h2>
+      <p>
+        If a server enables moderation logging, information about moderation actions may
+        be stored or sent to the configured moderation-log channel.
+        This may include information such as the affected user, moderator, action,
+        reason, and timestamp.
+      </p>
+      <p>
+        Server administrators are responsible for configuring moderation-log features
+        appropriately for their server and should consider their own data-protection
+        obligations.
+      </p>
+    </section>
+
+    <section class="section" id="p15">
+      <h2><span>15</span> User Memory</h2>
+      <p>
+        If a user explicitly uses a memory feature such as <strong>/remember</strong>,
+        the information provided through that feature may be stored to provide the
+        requested memory functionality.
+      </p>
+      <p>
+        Users can request deletion of stored memory and may use available bot commands
+        to remove memory where supported.
+      </p>
+    </section>
+
+    <section class="section" id="p16">
+      <h2><span>16</span> Groq as an External Provider</h2>
       <p>
         AI processing is currently provided through the Groq API. Groq states that
         customer data for inference requests is not retained by default. However, Groq
@@ -1329,8 +1387,8 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p8">
-      <h2><span>08</span> Discord</h2>
+    <section class="section" id="p17">
+      <h2><span>17</span> Discord</h2>
       <p>
         Nythxion AI operates through Discord. Discord independently processes information
         in connection with its platform and services. Nythxion AI does not control
@@ -1338,15 +1396,25 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
       <p>
         For information about Discord's own data processing, users should consult
-        Discord's current privacy documentation.
+        Discord's current privacy documentation. Discord's
+        <a class="contact" href="https://discord.com/terms">Terms of Service</a> and
+        <a class="contact" href="https://discord.com/guidelines">Community Guidelines</a>
+        also apply to your use of Discord.
       </p>
     </section>
 
-    <section class="section" id="p9">
-      <h2><span>09</span> Data Storage</h2>
+    <div class="dept-header">
+      <div class="label">Safeguards and Your Rights</div>
+      <h3>Retention, Security, and Rights</h3>
+      <p>Applies to all Nythxion Studios projects and Services.</p>
+    </div>
+
+    <section class="section" id="p18">
+      <h2><span>18</span> Data Storage and Retention</h2>
       <p>
-        Data stored directly by Nythxion AI is stored on the infrastructure used to
-        operate the bot.
+        Data stored directly by Nythxion Studios is stored on the infrastructure used to
+        operate our projects and Services. Data stored locally by desktop Software is retained
+        on your device until you delete it.
       </p>
       <p>
         The exact retention period depends on the type of data and the feature involved.
@@ -1355,50 +1423,42 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p10">
-      <h2><span>10</span> Moderation Logs</h2>
+    <section class="section" id="p19">
+      <h2><span>19</span> Third-Party Services</h2>
       <p>
-        If a server enables moderation logging, information about moderation actions may
-        be stored or sent to the configured moderation-log channel.
-        This may include information such as the affected user, moderator, action,
-        reason, and timestamp.
-      </p>
-      <p>
-        Server administrators are responsible for configuring moderation-log features
-        appropriately for their server and should consider their own data-protection
-        obligations.
+        Some of our Services rely on third parties, such as hosting providers, Discord, Figma, and Groq.
+        These providers process data in accordance with their own terms and privacy policies.
+        Where we use a provider to process personal data on our behalf, we aim to use providers
+        that offer appropriate safeguards.
       </p>
     </section>
 
-    <section class="section" id="p11">
-      <h2><span>11</span> User Memory</h2>
-      <p>
-        If a user explicitly uses a memory feature such as <strong>/remember</strong>,
-        the information provided through that feature may be stored to provide the
-        requested memory functionality.
-      </p>
-      <p>
-        Users can request deletion of stored memory and may use available bot commands
-        to remove memory where supported.
-      </p>
-    </section>
-
-    <section class="section" id="p12">
-      <h2><span>12</span> What We Do Not Do</h2>
+    <section class="section" id="p20">
+      <h2><span>20</span> What We Do Not Do</h2>
       <ul>
         <li>We do not sell personal data.</li>
-        <li>We do not use Nythxion AI data for targeted advertising.</li>
+        <li>We do not use personal data for targeted advertising.</li>
         <li>We do not intentionally track users across unrelated servers.</li>
         <li>We do not send every Discord message to Groq.</li>
         <li>We do not intentionally store complete AI conversations permanently as a default feature.</li>
-        <li>We do not intentionally collect personal information that is unnecessary for bot functionality.</li>
+        <li>We do not intentionally collect personal information that is unnecessary for the functionality of our Services.</li>
       </ul>
     </section>
 
-    <section class="section" id="p13">
-      <h2><span>13</span> Data Deletion</h2>
+    <section class="section" id="p21">
+      <h2><span>21</span> Security</h2>
       <p>
-        Users may request deletion of personal data stored directly by Nythxion AI by
+        We take reasonable technical and organizational measures designed to protect
+        data against unauthorized access, loss, misuse, or disclosure.
+        However, no electronic system or method of transmission can be guaranteed to
+        be completely secure.
+      </p>
+    </section>
+
+    <section class="section" id="p22">
+      <h2><span>22</span> Data Deletion</h2>
+      <p>
+        Users may request deletion of personal data stored directly by Nythxion Studios by
         contacting us at:
       </p>
       <p>
@@ -1411,8 +1471,8 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p14">
-      <h2><span>14</span> Your GDPR Rights</h2>
+    <section class="section" id="p23">
+      <h2><span>23</span> Your GDPR Rights</h2>
       <p>
         Where the GDPR applies, you may have the following rights, subject to applicable
         legal conditions:
@@ -1432,8 +1492,8 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p15">
-      <h2><span>15</span> Right to Complain</h2>
+    <section class="section" id="p24">
+      <h2><span>24</span> Right to Complain</h2>
       <p>
         Where applicable, you have the right to lodge a complaint with a competent data
         protection supervisory authority if you believe that your personal data is being
@@ -1441,8 +1501,8 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p16">
-      <h2><span>16</span> Automated Decision-Making</h2>
+    <section class="section" id="p25">
+      <h2><span>25</span> Automated Decision-Making</h2>
       <p>
         Nythxion AI uses automated AI-assisted moderation. Such systems may contribute
         to moderation actions such as message deletion or temporary timeouts.
@@ -1455,27 +1515,27 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
       </p>
     </section>
 
-    <section class="section" id="p17">
-      <h2><span>17</span> Security</h2>
+    <section class="section" id="p26">
+      <h2><span>26</span> Children</h2>
       <p>
-        We take reasonable technical and organizational measures designed to protect
-        data against unauthorized access, loss, misuse, or disclosure.
-        However, no electronic system or method of transmission can be guaranteed to
-        be completely secure.
+        Our Services are not directed at children below the minimum age required by applicable
+        law or by the relevant platform, such as Discord. If you believe we have received
+        personal data from a child who is too young to use a Service, please contact us so that
+        we can take appropriate action.
       </p>
     </section>
 
-    <section class="section" id="p18">
-      <h2><span>18</span> Changes to This Policy</h2>
+    <section class="section" id="p27">
+      <h2><span>27</span> Changes to This Policy</h2>
       <p>
-        This Privacy Policy may be updated when Nythxion AI's functionality, data
-        processing, third-party providers, or legal requirements change.
-        The latest version will be published on this page together with its effective date.
+        This Privacy Policy may be updated when our projects, data processing, third-party
+        providers, or legal requirements change. The latest version will be published on this
+        page together with its effective date.
       </p>
     </section>
 
-    <section class="section" id="p19">
-      <h2><span>19</span> Contact</h2>
+    <section class="section" id="p28">
+      <h2><span>28</span> Contact</h2>
       <p>
         For privacy questions, data requests, or other privacy-related concerns:
       </p>
@@ -1484,14 +1544,12 @@ Unless otherwise stated, references to “Nythxion Studios” in these Terms of 
         <a class="contact" href="mailto:nythxionai@gmx.net">nythxionai@gmx.net</a>
       </p>
     </section>
-
-  </article>
 </main>
 
 <footer class="footer">
   <div class="footer-inner">
-    <div>© 2026 Nythxion Studios ·  Nythxion Designs · Nythxion Development · Nythxion AI · Nythxion Open-Source</div>
-    <div>Legal Center · Last updated: October 16, 2026</div>
+    <div>© 2026 Nythxion Studios ·  Nythxion Designs · Nythxion Development · Nythxion AI · Nythxion Open-Source · Nythxion Watermarker · Nythxion Shortcuts</div>
+    <div>Legal Center · Last updated October 17, 2026</div>
   </div>
 </footer>
 
